@@ -2,15 +2,20 @@
 
 //đây là cách truyền props thứ nhất
 function Status(props){ 
+        console.log(props);
     return <h3>Status: {props.status}</h3>
+
 }
 
 //đây là cách truyền props thứ 2
-function Product({name, price}){ //Component luôn viết hoa chữ cái đầu
+function Product({name, price, category = "khác"}){ //Component luôn viết hoa chữ cái đầu
+    // console.log(category); nếu như không có giá trị hay giá trị = undefine thì react sẽ kh hiện ra, null và false cũng kh hiển thị luôn
+    
     return(
         <>
-            <h3>Name product: {name}</h3>
-            <span>Price: {price}</span>
+            <h3>{name}</h3>
+            <span>{price}$</span>
+            <p>{category}</p>
         </>
     )
 }

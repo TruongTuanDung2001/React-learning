@@ -6,7 +6,6 @@ function App(){
   return (
     <div>
       <Header />
-
       <h1>Danh sách sản phẩm</h1>
       <Product 
         name = "Iphone 13"
@@ -25,10 +24,27 @@ function App(){
               inStock={true}
           />
         */}
-      <Status status = "In stock" />
-      <Product />
-      <Product />
 
+        <Product
+          name = "MacBook Pro"
+          price = {3500}  
+          category = "Laptop"
+        />
+        <Product
+          name = "Dell XPS"
+          price = {2200}  
+        />
+        <Product
+          name = "Asus ROG"
+          price = {1800}  
+        />
+        <Product
+          name = "Lenovo ThinkPad"
+          price = {1700}  
+        />
+        <Status 
+          status = "In Stock"
+        />
       <Footer />
     </div>
   )
