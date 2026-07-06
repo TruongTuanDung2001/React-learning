@@ -1,9 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-
 function App(){
+  const name = "Dũng"
+  const age = 25
+  const total = 50
   return (
-    <h1>Hello React 🚀</h1>
+    <div>
+      <h1>Tên: {name}</h1>
+      <h1>Tuổi: {age}</h1>
+      <h1>Tổng: {total + age}</h1>
+    </div>
   )
 }
 
