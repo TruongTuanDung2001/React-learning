@@ -1,12 +1,18 @@
+import Product from "./components/Product";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 function App(){
-  const name = "Dũng"
-  const age = 25
-  const total = 50
   return (
     <div>
-      <h1>Tên: {name}</h1>
-      <h1>Tuổi: {age}</h1>
-      <h1>Tổng: {total + age}</h1>
+      <Header />
+
+      <h1>Danh sách sản phẩm</h1>
+      <Product />
+      <Product />
+      <Product />
+
+      <Footer />
     </div>
   )
 }
