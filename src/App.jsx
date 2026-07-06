@@ -1,4 +1,4 @@
-import Product from "./components/Product";
+import {Product, Status} from "./components/Product";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 

@@ -7,4 +7,9 @@ function Product(){ //Component luôn viết hoa chữ cái đầu
     )
 }
 
-export default Product;
+function Status(){
+    return <h3>In Stock</h3>
+}
+
+// export default Product;
+export { Product, Status};
