@@ -8,7 +8,24 @@ function App(){
       <Header />
 
       <h1>Danh sách sản phẩm</h1>
-      <Product />
+      <Product 
+        name = "Iphone 13"
+        price = {13000000} /> 
+        {/* cách truyền props:
+          Có thể nhớ quy tắc này:
+          "..." → truyền chuỗi.
+          {...} → truyền biểu thức JavaScript.
+
+          Ví dụ:
+
+          <Product
+              name="Iphone"
+              price={2000}
+              discount={10}
+              inStock={true}
+          />
+        */}
+      <Status status = "In stock" />
       <Product />
       <Product />
 
