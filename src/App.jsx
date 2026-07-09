@@ -2,6 +2,7 @@ import {Product, Status} from "./components/Product";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react"; //để sử dụng useState thay đổi và cập nhật dữ liệu trong react
+import { Counter, ChangeColor } from "./components/expReact1";
 
 function App(){
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -20,6 +21,8 @@ function App(){
   function reduce(){
     setCount(count - 1)
   }
+
+
 
   return (
     <div>
@@ -71,4 +74,99 @@ function App(){
   )
 }
 
-export default App
+function MapProduct(){
+    //
+  const products = [
+    {
+      id: 1,
+      name: "MacBook Pro",
+      price: 3500,
+      category: "Laptop",
+    },
+    {
+      id: 2,
+      name: "Dell XPS",
+      price: 2200,
+      category: "Laptop",
+    },
+    {
+      id: 3,
+      name: "Asus ROG",
+      price: 1800,
+      category: "Gaming",
+    },
+    {
+      id: 4,
+      name: "Lenovo ThinkPad",
+      price: 1700,
+      category: "Business",
+    },
+  ];
+  return (//cái này là jsx nên mới có thể render ra giao diện bên ngoài, thấy có thẻ <></> hay <div><div/> bọc vô á, nếu kết quả 1 cái thì khỏi phải bọc
+    <>
+      {products.map(product =>( //map trả về 1 mảng mới đầy đủ như mảng cũ, chỉ thay đổi giá trị từng phần tử.
+      // Lưu ý: dùng dấu () là return luôn nên kh cần phải return nữa. nếu dùng {} thì =>{ return <Product .../> }
+        <Product 
+            key = {product.id} //key vì react kh biết phân biệt mỗi product nên cần key để phân loại, đưa thuộc tính id vào là được rồi
+            name = {product.name}
+            price = {product.price}
+            category = {product.category}
+        />
+      ))}
+    </>
+  );
+  
+}
+
+function ExpReact1(){
+  const colors = [
+    {
+      id: 1,
+      color: "Red"
+    },
+    {
+      id: 2,
+      color: "Blue"
+    },
+    {
+      id: 3,
+      color: "Green"
+    },
+  ]
+  const [bgColor, setBgColor] = useState("black")
+  const blockStyle = {
+    width: "200px",
+    height: "200px",
+    background: bgColor,
+    margin: "20px 0px"
+  }
+    return (
+      <div>
+        {/* Couter */}
+        <Counter />
+
+        {/* Change color */}
+        {/* 
+            Hiện cái block bự màu đen ra trước
+            Style cho cái block, để cái background là bgColor để thay đổi
+            Hiện cái nút dựa trên colors[]
+            Truyền tham số vào từng cái button là key, color, setBgColor
+            * Mình cần click vào button là chạy cái setBgColor thì color mới thay đổi và react mới hiểu
+
+        */}
+        <div style={blockStyle}> 
+          {colors.map(color => {
+            return (
+              <ChangeColor 
+                key = {color.id}
+                color = {color.color}
+                name= {"name: " + color.color }
+                setBgColor = {setBgColor}
+              />
+            )
+          })}
+        </div>
+      </div>
+    )
+}
+export {App, MapProduct, ExpReact1};

@@ -2,7 +2,6 @@
 
 //đây là cách truyền props thứ nhất
 function Status(props){ 
-        console.log(props);
     return <h3>Status: {props.status}</h3>
 
 }
