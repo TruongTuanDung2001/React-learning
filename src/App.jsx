@@ -2,7 +2,7 @@ import { Product, Status } from "./components/Product";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react"; //để sử dụng useState thay đổi và cập nhật dữ liệu trong react
-import { Counter, ChangeColor, ShowHideBlock, ChangeLike } from "./components/expReact1";
+import { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5 } from "./components/expReact1";
 
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -161,6 +161,8 @@ function ExpReact1() {
       {/* change like */}
       <ChangeLike />
 
+      {/* exp 5 */}
+      <Exp5 />
     </div>
 
   );

@@ -88,9 +88,9 @@ function ChangeLike() {
   }
 
   //
-  let [resultClicked, setResultClicked] = useState(false)
-  function clickedLike(){
-        setResultClicked(!resultClicked)
+  let [resultClicked, setResultClicked] = useState(false);
+  function clickedLike() {
+    setResultClicked(!resultClicked);
   }
 
   return (
@@ -100,18 +100,39 @@ function ChangeLike() {
         <button onClick={clickLike}>Click</button>
       </div>
 
-      <div className="likeBlock2" style={{ height: "50px", width: "100px", background: "gray", marginTop: "20px" }} onClick={clickedLike}>
-        {!resultClicked ? 
-        (
-            <h4>🤍 Like</h4>
-        ):
-        (
-            <h4>❤️ Liked</h4>
-        )}
-        
+      <div
+        className="likeBlock2"
+        style={{
+          height: "50px",
+          width: "100px",
+          background: "gray",
+          marginTop: "20px",
+        }}
+        onClick={clickedLike}
+      >
+        {!resultClicked ? <h4>🤍 Like</h4> : <h4>❤️ Liked</h4>}
       </div>
     </div>
   );
 }
 
-export { Counter, ChangeColor, ShowHideBlock, ChangeLike };
+//exp5 render list fruits
+function Exp5() {
+  const fruits = ["Apple", "Banana", "Orange", "Mango", "Kiwi"];
+  const icons = {
+    Apple: "🍎",
+    Banana: "🍌",
+    Orange: "🍊",
+    Mango: "🥭",
+    Kiwi: "🥝",
+  };
+  return (
+    <div>
+      {fruits.map((f) => (
+        <p>{icons[f]} {f}</p>
+      ))}
+    </div>
+  );
+}
+
+export { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5 };
