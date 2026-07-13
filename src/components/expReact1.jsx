@@ -51,9 +51,10 @@ function ChangeColor({ color, setBgColor }) {
   );
 }
 
+//Show/hide block
 function ShowHideBlock() {
   const [statusDisplay, setStatusDisplay] = useState("block");
-  const [text, setText] = useState("None Block")
+  const [text, setText] = useState("None Block");
   const exp3Style = {
     width: "200px",
     height: "200px",
@@ -63,23 +64,54 @@ function ShowHideBlock() {
   };
 
   function changeStatus() {
-    if(statusDisplay === 'block'){
-        setStatusDisplay("none");
-        setText('Show block')
-    }else{
-        setStatusDisplay("block");
-        setText('None Block')
+    if (statusDisplay === "block") {
+      setStatusDisplay("none");
+      setText("Show block");
+    } else {
+      setStatusDisplay("block");
+      setText("None Block");
     }
   }
-  return(
+  return (
     <div>
-        <div className="block" style={exp3Style}>
-
-        </div>
-        <button onClick={changeStatus}>{text}</button>
+      <div className="block" style={exp3Style}></div>
+      <button onClick={changeStatus}>{text}</button>
     </div>
-    
-  )
+  );
 }
 
-export { Counter, ChangeColor, ShowHideBlock };
+//Favorite
+function ChangeLike() {
+  const [like, setLike] = useState(0);
+  function clickLike() {
+    setLike(like + 1);
+  }
+
+  //
+  let [resultClicked, setResultClicked] = useState(false)
+  function clickedLike(){
+        setResultClicked(!resultClicked)
+  }
+
+  return (
+    <div className="list_like">
+      <div className="likeBlock1">
+        <h4>❤️ {like} likes</h4>
+        <button onClick={clickLike}>Click</button>
+      </div>
+
+      <div className="likeBlock2" style={{ height: "50px", width: "100px", background: "gray", marginTop: "20px" }} onClick={clickedLike}>
+        {!resultClicked ? 
+        (
+            <h4>🤍 Like</h4>
+        ):
+        (
+            <h4>❤️ Liked</h4>
+        )}
+        
+      </div>
+    </div>
+  );
+}
+
+export { Counter, ChangeColor, ShowHideBlock, ChangeLike };
