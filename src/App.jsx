@@ -1,14 +1,14 @@
-import {Product, Status} from "./components/Product";
+import { Product, Status } from "./components/Product";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react"; //để sử dụng useState thay đổi và cập nhật dữ liệu trong react
-import { Counter, ChangeColor } from "./components/expReact1";
+import { Counter, ChangeColor, ShowHideBlock } from "./components/expReact1";
 
-function App(){
+function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
-  function increase(){
-    setCount(count + 1)
-    setCount(count + 1)
+  function increase() {
+    setCount(count + 1);
+    setCount(count + 1);
     // tại sao ở trên chạy 2 lần setCount mà count sau khi bấm nút vẫn tăng 1
     // tại vì setCount 1 lúc này sẽ lấy count đang lưu trong bộ nhớ react ban đầu là 0 nên 0 + 1 = 1 => setCount(1) chứ count chưa là 1
     // lần 2 setCount 2 lúc này chạy sau setCount 1 nhưng count lúc này vẫn là 0 tại vì setCount(1) là 1 chứ count chưa là 1, sau khi thay đổi giao cập nhật giao diện count mới tăng lên 1.
@@ -18,20 +18,16 @@ function App(){
     // React chưa cập nhật state ngay lập tức nên cả hai đều trở thành setCount(1).
   }
 
-  function reduce(){
-    setCount(count - 1)
+  function reduce() {
+    setCount(count - 1);
   }
-
-
 
   return (
     <div>
       <Header />
       <h1>Danh sách sản phẩm</h1>
-      <Product 
-        name = "Iphone 13"
-        price = {13000000} /> 
-        {/* cách truyền props:
+      <Product name="Iphone 13" price={13000000} />
+      {/* cách truyền props:
           Có thể nhớ quy tắc này:
           "..." → truyền chuỗi.
           {...} → truyền biểu thức JavaScript.
@@ -43,26 +39,11 @@ function App(){
               inStock={true}
           />
         */}
-        <Product
-          name = "MacBook Pro"
-          price = {3500}  
-          category = "Laptop"
-        />
-        <Product
-          name = "Dell XPS"
-          price = {2200}  
-        />
-        <Product
-          name = "Asus ROG"
-          price = {1800}  
-        />
-        <Product
-          name = "Lenovo ThinkPad"
-          price = {1700}  
-        />
-        <Status 
-          status = "In Stock"
-        />
+      <Product name="MacBook Pro" price={3500} category="Laptop" />
+      <Product name="Dell XPS" price={2200} />
+      <Product name="Asus ROG" price={1800} />
+      <Product name="Lenovo ThinkPad" price={1700} />
+      <Status status="In Stock" />
       <Footer />
 
       <br />
@@ -71,11 +52,11 @@ function App(){
       <button onClick={increase}>+</button>
       <button onClick={reduce}>-</button>
     </div>
-  )
+  );
 }
 
-function MapProduct(){
-    //
+function MapProduct() {
+  //
   const products = [
     {
       id: 1,
@@ -102,51 +83,58 @@ function MapProduct(){
       category: "Business",
     },
   ];
-  return (//cái này là jsx nên mới có thể render ra giao diện bên ngoài, thấy có thẻ <></> hay <div><div/> bọc vô á, nếu kết quả 1 cái thì khỏi phải bọc
+  return (
+    //cái này là jsx nên mới có thể render ra giao diện bên ngoài, thấy có thẻ <></> hay <div><div/> bọc vô á, nếu kết quả 1 cái thì khỏi phải bọc
     <>
-      {products.map(product =>( //map trả về 1 mảng mới đầy đủ như mảng cũ, chỉ thay đổi giá trị từng phần tử.
-      // Lưu ý: dùng dấu () là return luôn nên kh cần phải return nữa. nếu dùng {} thì =>{ return <Product .../> }
-        <Product 
-            key = {product.id} //key vì react kh biết phân biệt mỗi product nên cần key để phân loại, đưa thuộc tính id vào là được rồi
-            name = {product.name}
-            price = {product.price}
-            category = {product.category}
-        />
-      ))}
+      {products.map(
+        (
+          product, //map trả về 1 mảng mới đầy đủ như mảng cũ, chỉ thay đổi giá trị từng phần tử.
+        ) => (
+          // Lưu ý: dùng dấu () là return luôn nên kh cần phải return nữa. nếu dùng {} thì =>{ return <Product .../> }
+          <Product
+            key={product.id} //key vì react kh biết phân biệt mỗi product nên cần key để phân loại, đưa thuộc tính id vào là được rồi
+            name={product.name}
+            price={product.price}
+            category={product.category}
+          />
+        ),
+      )}
     </>
   );
-  
 }
 
-function ExpReact1(){
+function ExpReact1() {
   const colors = [
     {
       id: 1,
-      color: "Red"
+      color: "Red",
     },
     {
       id: 2,
-      color: "Blue"
+      color: "Blue",
     },
     {
       id: 3,
-      color: "Green"
+      color: "Green",
     },
-  ]
-  const [bgColor, setBgColor] = useState("black")
+  ];
+  const [bgColor, setBgColor] = useState("black");
   const blockStyle = {
     width: "200px",
     height: "200px",
     background: bgColor,
-    margin: "20px 0px"
-  }
-    return (
-      <div>
-        {/* Couter */}
-        <Counter />
+    margin: "20px 0px",
+  };
 
-        {/* Change color */}
-        {/* 
+  // show/hide content
+
+  return (
+    <div>
+      {/* Couter */}
+      <Counter />
+
+      {/* Change color */}
+      {/* 
             Hiện cái block bự màu đen ra trước
             Style cho cái block, để cái background là bgColor để thay đổi
             Hiện cái nút dựa trên colors[]
@@ -154,19 +142,25 @@ function ExpReact1(){
             * Mình cần click vào button là chạy cái setBgColor thì color mới thay đổi và react mới hiểu
 
         */}
-        <div style={blockStyle}> 
-          {colors.map(color => {
-            return (
-              <ChangeColor 
-                key = {color.id}
-                color = {color.color}
-                name= {"name: " + color.color }
-                setBgColor = {setBgColor}
-              />
-            )
-          })}
-        </div>
+      <div style={blockStyle}>
+        {colors.map((color) => {
+          return (
+            <ChangeColor
+              key={color.id}
+              color={color.color}
+              name={"name: " + color.color}
+              setBgColor={setBgColor}
+            />
+          );
+        })}
       </div>
-    )
+
+      {/* change display */}
+      <ShowHideBlock />
+
+    </div>
+
+  );
 }
-export {App, MapProduct, ExpReact1};
+
+export { App, MapProduct, ExpReact1 };

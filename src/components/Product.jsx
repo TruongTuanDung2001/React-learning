@@ -19,5 +19,7 @@ function Product({name, price, category = "khác"}){ //Component luôn viết ho
     )
 }
 
+
+
 // export default Product;
 export { Product, Status};
