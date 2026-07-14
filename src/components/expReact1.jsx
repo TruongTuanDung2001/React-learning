@@ -179,4 +179,39 @@ function Exp6() {
   );
 }
 
-export { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5, Exp6 };
+//exp7 render cart product
+function Exp7() {
+  const products = [
+    {
+      id: 1,
+      name: "Nike Mercurial",
+      price: 3200000,
+      image: "https://...",
+    },
+    {
+      id: 2,
+      name: "Adidas Predator",
+      price: 2800000,
+      image: "https://...",
+    },
+  ];
+
+  return (
+    <div className="productList">
+      <h1>Product cart</h1>
+      {
+        products.map(p => (
+          <div className="productCart">
+            <hr /> <br />
+            <p>{p.name}</p> <br />
+            <p>{p.price}</p> <br />
+            <button>{"[ Buy ]"}</button>
+            <hr />
+          </div>
+        ))
+      }
+    </div>
+  )
+}
+
+export { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5, Exp6, Exp7 };
