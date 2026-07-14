@@ -11,6 +11,7 @@ import {
   Exp6,
   Exp7,
   Exp8,
+  Exp9,
 } from "./components/expReact1";
 
 function App() {
@@ -183,6 +184,9 @@ function ExpReact1() {
       <Exp8 name="Dung" age="26" school="ABC" />
       <Exp8 name="Toidodaden" age="22" school="123" />
       <Exp8 name="Messi" age="30" school="999" />
+
+      {/* exp 9 */}
+      <Exp9 />
     </div>
   );
 }
