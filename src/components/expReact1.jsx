@@ -214,4 +214,17 @@ function Exp7() {
   )
 }
 
-export { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5, Exp6, Exp7 };
+//exp8 render props
+function Exp8({name, age, school}){
+  return (
+    <div className="student">
+        <hr />
+        <br />
+        <p>Name: {name}</p>
+        <p>Age: {age}</p>
+        <p>School: {school}</p> <br />
+    </div>
+  )
+}
+
+export { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5, Exp6, Exp7, Exp8 };

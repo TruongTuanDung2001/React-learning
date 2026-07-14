@@ -2,7 +2,16 @@ import { Product, Status } from "./components/Product";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react"; //để sử dụng useState thay đổi và cập nhật dữ liệu trong react
-import { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5, Exp6, Exp7 } from "./components/expReact1";
+import {
+  Counter,
+  ChangeColor,
+  ShowHideBlock,
+  ChangeLike,
+  Exp5,
+  Exp6,
+  Exp7,
+  Exp8,
+} from "./components/expReact1";
 
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -170,9 +179,11 @@ function ExpReact1() {
       {/* exp 7 */}
       <Exp7 />
 
-      
+      {/* exp8 */}
+      <Exp8 name="Dung" age="26" school="ABC" />
+      <Exp8 name="Toidodaden" age="22" school="123" />
+      <Exp8 name="Messi" age="30" school="999" />
     </div>
-
   );
 }
 
