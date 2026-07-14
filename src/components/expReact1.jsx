@@ -228,14 +228,56 @@ function Exp8({ name, age, school }) {
 //exp 9 render todo list
 function Exp9() {
   const todos = ["Học React", "Đi đá bóng", "Làm bài tập"];
-  return <div className="todo">
-    <h1>To do list</h1>
-    <div>
-      {todos.map(todo => (
-        <p>{todo}</p>
-      ))}
+  return (
+    <div className="todo">
+      <h1>To do list</h1>
+      <div>
+        {todos.map((todo) => (
+          <p>{todo}</p>
+        ))}
+      </div>
     </div>
-  </div>;
+  );
+}
+
+//exp10 render mini shopping
+function Exp10() {
+  const products = [
+    {
+      id: 1,
+      name: "Nike",
+      price: 100,
+    },
+    {
+      id: 2,
+      name: "Puma",
+      price: 120,
+    },
+    {
+      id: 3,
+      name: "Mizuno",
+      price: 90,
+    },
+  ];
+  const [numberCart, setNumberCart] = useState(0);
+  //
+  return (
+    <div className="shop">
+      <hr /> <br />
+      <p>Cart: {"🛒 Cart: " + numberCart}</p>
+      <hr /> <br />
+      {(
+        products.map(p => (
+          <div key={p.id} className="cart">
+            <p>Name: {p.name}</p>
+            <p>Price: {p.price}$</p>
+            <button onClick={() => setNumberCart(pre => pre + 1)}>Add</button>
+            <br /> <hr />
+          </div>
+        ))
+      )}
+    </div>
+  )
 }
 
 export {
@@ -248,4 +290,5 @@ export {
   Exp7,
   Exp8,
   Exp9,
+  Exp10,
 };
