@@ -56,8 +56,8 @@ function ShowHideBlock() {
   const [statusDisplay, setStatusDisplay] = useState("block");
   const [text, setText] = useState("None Block");
   const exp3Style = {
-    width: "200px",
-    height: "200px",
+    width: "50px",
+    height: "50px",
     background: "brown",
     margin: "20px 0px",
     display: statusDisplay,
@@ -129,10 +129,54 @@ function Exp5() {
   return (
     <div>
       {fruits.map((f) => (
-        <p>{icons[f]} {f}</p>
+        <p>
+          {icons[f]} {f}
+        </p>
       ))}
     </div>
   );
 }
 
-export { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5 };
+//exp6 render students
+function Exp6() {
+  const students = [
+    {
+      id: 1,
+      name: "Nam",
+      age: 20,
+    },
+    {
+      id: 2,
+      name: "Lan",
+      age: 19,
+    },
+    {
+      id: 3,
+      name: "Minh",
+      age: 22,
+    },
+  ];
+
+  //
+  return (
+    <div
+      style={{
+        height: "200px",
+        width: "200px",
+        background: "brown",
+        marginTop: "20px",
+        color: "#fff",
+        textAlign: "center",
+      }}
+    >
+      {students.map((s) => (
+        <div>
+          <h4>Name: {s.name}</h4>
+          <h4>Age: {s.age}</h4>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export { Counter, ChangeColor, ShowHideBlock, ChangeLike, Exp5, Exp6 };
