@@ -69,6 +69,7 @@ function Exp2() {
   );
 }
 
+// exp3 dark mode
 function Exp3() {
   const [background, setBackground] = useState("#fff");
   const [color, setColor] = useState("#000");
@@ -101,4 +102,31 @@ function Exp3() {
   );
 }
 
-export { Exp1, Exp2, Exp3 };
+// exp4 input password
+function Exp4() {
+  const [pass, setPass] = useState("password");
+  const [text, setText] = useState("Show");
+
+  const toggleShowHide = () => {
+    if (pass == "password") {
+      setPass("text");
+      setText("Hide");
+    } else {
+      setPass("password");
+      setText("Show");
+    }
+  };
+
+  return (
+    <div className="exp4">
+      <input type={pass} />
+      <button
+        onClick={toggleShowHide}
+      >
+        {text}
+      </button>
+    </div>
+  );
+}
+
+export { Exp1, Exp2, Exp3, Exp4 };
