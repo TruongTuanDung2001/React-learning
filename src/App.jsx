@@ -14,8 +14,10 @@ import { useState } from "react"; //để sử dụng useState thay đổi và c
 //   Exp9,
 //   Exp10
 // } from "./components/expReact1";
-import { Exp1, Exp2, Exp3, Exp4 } from "./components/ExpReact2";
+// import { Exp1, Exp2, Exp3, Exp4 } from "./components/ExpReact2";
+import { ConditionalRendering } from "./components/ConditionalRendering";
 
+//
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
   function increase() {
@@ -196,19 +198,44 @@ function ExpReact1() {
   );
 }
 
-
 // Exp 2
-function ExpReact2(){
+function ExpReact2() {
   return (
     <div className="exp2">
       <br /> <hr />
       <Exp1 /> <br /> <hr />
-      <Exp2 /> <br /> <hr /> 
-      <Exp3 /> <br /> <hr /> 
-      <Exp4 /> <br /> <hr /> 
+      <Exp2 /> <br /> <hr />
+      <Exp3 /> <br /> <hr />
+      <Exp4 /> <br /> <hr />
+    </div>
+  );
+}
 
+//Conditional Rendering
+function Conditional(){
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [home, setHome] = useState(false);
+
+  return (
+    <div className="conditionalRendering">
+      <button onClick={() => setLoading(!loading)}>{loading ? "Ngưng tải" : "Tải lại"}</button>
+      <button onClick={() => setError(!error)}>{error ? "Đang bị lỗi" : "Không có lỗi"}</button>
+      <button onClick={() => setLogin(!login)}>{login ? "Logout" : "Login"}</button>
+      <button onClick={() => setHome(!home)}>{home ? "Thoát trang chủ" : "Quay lại trang chủ"}</button>
+      <hr /> <br />
+      <ConditionalRendering
+        key = "1"
+        loading = {loading}
+        login = {login}
+        error = {error}
+        home = {home}
+      />
+      <hr /> <br />
     </div>
   )
 }
 
-export { App, MapProduct, ExpReact1, ExpReact2 };
+//
+export { App, MapProduct, ExpReact1, ExpReact2, Conditional };
