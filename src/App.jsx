@@ -2,18 +2,19 @@ import { Product, Status } from "./components/Product";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useState } from "react"; //để sử dụng useState thay đổi và cập nhật dữ liệu trong react
-import {
-  Counter,
-  ChangeColor,
-  ShowHideBlock,
-  ChangeLike,
-  Exp5,
-  Exp6,
-  Exp7,
-  Exp8,
-  Exp9,
-  Exp10
-} from "./components/expReact1";
+// import {
+//   Counter,
+//   ChangeColor,
+//   ShowHideBlock,
+//   ChangeLike,
+//   Exp5,
+//   Exp6,
+//   Exp7,
+//   Exp8,
+//   Exp9,
+//   Exp10
+// } from "./components/expReact1";
+import { Exp1 } from "./components/ExpReact2";
 
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -195,4 +196,14 @@ function ExpReact1() {
   );
 }
 
-export { App, MapProduct, ExpReact1 };
+
+// Exp 2
+function ExpReact2(){
+  return (
+    <div className="exp2">
+      <Exp1 />
+    </div>
+  )
+}
+
+export { App, MapProduct, ExpReact1, ExpReact2 };

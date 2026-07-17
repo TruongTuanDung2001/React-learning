@@ -9,3 +9,8 @@ body {
   padding: 20px;
   background: rgb(42, 118, 165)
 }
+
+button{
+  padding: 6px;
+  font-size: 12px;
+}
