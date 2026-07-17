@@ -14,7 +14,7 @@ import { useState } from "react"; //để sử dụng useState thay đổi và c
 //   Exp9,
 //   Exp10
 // } from "./components/expReact1";
-import { Exp1, Exp2 } from "./components/ExpReact2";
+import { Exp1, Exp2, Exp3 } from "./components/ExpReact2";
 
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -201,10 +201,11 @@ function ExpReact1() {
 function ExpReact2(){
   return (
     <div className="exp2">
-      <Exp1 />
-      <br />
-      <hr />
-      <Exp2 />
+      <br /> <hr />
+      <Exp1 /> <br /> <hr />
+      <Exp2 /> <br /> <hr /> 
+      <Exp3 /> <br /> <hr /> 
+
     </div>
   )
 }

@@ -42,15 +42,15 @@ function Exp2() {
   let [warning, setWarning] = useState("");
 
   function increaseFontSize() {
-    let newE = fontSize + 1; //19 + 1 = 20 | 
-    if(newE <= 20) setFontSize(newE);
+    let newE = fontSize + 1; //19 + 1 = 20 |
+    if (newE <= 20) setFontSize(newE);
     if (newE > 20) setWarning("Không được lớn hơn 20");
     else setWarning("");
   }
 
   function reduceFontSize() {
-    let newE = fontSize - 1; // 12 - 1 = 11 
-    if(newE >= 12) setFontSize(newE);
+    let newE = fontSize - 1; // 12 - 1 = 11
+    if (newE >= 12) setFontSize(newE);
     if (newE < 12) setWarning("Không được nhỏ hơn 12");
     else setWarning("");
   }
@@ -69,4 +69,36 @@ function Exp2() {
   );
 }
 
-export { Exp1, Exp2 };
+function Exp3() {
+  const [background, setBackground] = useState("#fff");
+  const [color, setColor] = useState("#000");
+  const styleExp3 = {
+    background: background,
+    color: color,
+    transition: ".5s",
+    height: "50px",
+    textAlign: "center",
+  };
+
+  const lightMode = () => {
+    setBackground("#fff");
+    setColor("#000");
+  };
+
+  const darkMode = () => {
+    setBackground("#000");
+    setColor("#fff");
+  };
+
+  return (
+    <div className="exp3">
+      <button onClick={lightMode}>Light</button>
+      <button onClick={darkMode}>Dart</button>
+      <div className="block" style={styleExp3}>
+        <h3>Hello World !!!</h3>
+      </div>
+    </div>
+  );
+}
+
+export { Exp1, Exp2, Exp3 };
