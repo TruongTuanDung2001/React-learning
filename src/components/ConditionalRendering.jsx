@@ -1,19 +1,21 @@
+import { useState } from "react";
+
 // Conditional Rendering
-function ConditionalRendering({loading, error, login, home}) {
-    return (
-        <>
-        {/* cách chuyền hàm và tham số theo kiểu JSX react js, dùng component */}
-            <Login isLogin={login}/>
-            <Loading isLoading={loading} />
-            <Error isError={error}/>
-            <Home isHome={home}/>
-        </>
-        //nếu dùng {Login(login)} thì 
-        /**
+function ConditionalRendering({ loading, error, login, home }) {
+  return (
+    <>
+      {/* cách chuyền hàm và tham số theo kiểu JSX react js, dùng component */}
+      <Login isLogin={login} />
+      <Loading isLoading={loading} />
+      <Error isError={error} />
+      <Home isHome={home} />
+    </>
+    //nếu dùng {Login(login)} thì
+    /**
          {Login(login)} thì Login({ isLogin }) bỏ 2 cái ngoặc {} ra, thành Login(isLogin )
          không nên dùng kiểu này
          */
-    )
+  );
 }
 // Cách dùng if
 function Login({ isLogin }) {
@@ -44,5 +46,21 @@ function Home({ isHome }) {
   return <h3>Quay lại trang chủ</h3>;
 }
 
+//toán tử 3 ngôi ? :
+function Check() {
+  const [isLogin, setLogin] = useState(false);
+  const [text, setText] = useState("Login");
+  function click() {
+    isLogin === false
+      ? (setLogin(true), setText("logout"))
+      : (setLogin(false), setText("Login"));
+  }
+  return (
+    <>
+      <button onClick={click}>Check</button>
+      <p>{text}</p>
+    </>
+  );
+}
 //
-export { ConditionalRendering };
+export { ConditionalRendering, Check };
