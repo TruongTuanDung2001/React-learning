@@ -72,24 +72,47 @@ function ShowProduct() {
   ];
   return (
     <div>
-        {
-          products.length > 0  ?  (products.map(p => (
-            <p  key = {p.id}>{p.name}</p>
-          ))) :  (<p>Không có sản phẩm</p>)
-        }
+      {products.length > 0 ? (
+        products.map((p) => <p key={p.id}>{p.name}</p>)
+      ) : (
+        <p>Không có sản phẩm</p>
+      )}
     </div>
   );
 }
 
 //loading
-function LoadingData(){
+function LoadingData() {
   const loading = true;
+  return <div>{loading ? <h1>Loading ...</h1> : <h1>Home page</h1>}</div>;
+}
+
+//show/hide data
+function ShowHideProduct() {
+  const products = [
+    { id: 1, name: "Nike" },
+    { id: 2, name: "Puma" },
+    { id: 3, name: "Adidas" },
+  ];
+  const [text, setText] = useState(false);
+
   return (
     <div>
-      {
-        loading ? <h1>Loading ...</h1> : <h1>Home page</h1>
-      }
+      <button onClick={() => setText(!text)}>
+        {text ? "Hiện sản phẩm" : "Ẩn sản phẩm"}
+      </button>
+      {(text && products.length > 0)
+        ? products.map((p) => <p key={p.id}>{p.name}</p>)
+        : ""}
     </div>
-  )
+  );
 }
-export { ConditionalRendering, Check, ShowProduct, LoadingData };
+
+//
+export {
+  ConditionalRendering,
+  Check,
+  ShowProduct,
+  LoadingData,
+  ShowHideProduct,
+};
