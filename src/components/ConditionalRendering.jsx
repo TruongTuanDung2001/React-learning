@@ -63,7 +63,7 @@ function Check() {
   );
 }
 
-//
+//show product
 function ShowProduct() {
   const products = [
     { id: 1, name: "Nike" },
@@ -80,4 +80,16 @@ function ShowProduct() {
     </div>
   );
 }
-export { ConditionalRendering, Check, ShowProduct };
+
+//loading
+function LoadingData(){
+  const loading = true;
+  return (
+    <div>
+      {
+        loading ? <h1>Loading ...</h1> : <h1>Home page</h1>
+      }
+    </div>
+  )
+}
+export { ConditionalRendering, Check, ShowProduct, LoadingData };
