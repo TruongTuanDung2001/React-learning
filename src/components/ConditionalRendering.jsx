@@ -101,11 +101,35 @@ function ShowHideProduct() {
       <button onClick={() => setText(!text)}>
         {text ? "Hiện sản phẩm" : "Ẩn sản phẩm"}
       </button>
-      {(text && products.length > 0)
+      {text && products.length > 0
         ? products.map((p) => <p key={p.id}>{p.name}</p>)
         : ""}
     </div>
   );
+}
+
+//manager users
+function ManagerUsers() {
+  const users = [
+    { id: 1, name: "An", role: "admin" },
+    { id: 2, name: "Bình", role: "user" },
+    { id: 3, name: "Cường", role: "admin" },
+  ];
+  return (
+    <div>
+      {
+        users.length > 0 ? users.map(u => (
+          <div  key={u.id}>
+            <p>{u.name}</p>
+            {/* {u.role === "admin" ? (<button>Delete</button>) : ""}cách này dư 1 cái "" của else á */}
+            {/* cách dưới thì kh cần thêm cái else. Giải thích cách dưới: không phải điều kiện && điều kiện: chạy khi hai cái thỏa, có thể sử dụng như bên dưới là nếu điều kiện bên trái true thì return cái bên phải, nếu false thì kh chạy. Đây là cách sử dung && mới */}
+            {u.role === "admin" && <button>Delete</button>} 
+          </div>
+          
+        )) : ""
+      }
+    </div>
+  )
 }
 
 //
@@ -115,4 +139,5 @@ export {
   ShowProduct,
   LoadingData,
   ShowHideProduct,
+  ManagerUsers,
 };
