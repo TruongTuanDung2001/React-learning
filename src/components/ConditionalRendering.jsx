@@ -62,5 +62,22 @@ function Check() {
     </>
   );
 }
+
 //
-export { ConditionalRendering, Check };
+function ShowProduct() {
+  const products = [
+    { id: 1, name: "Nike" },
+    { id: 2, name: "Puma" },
+    { id: 3, name: "Adidas" },
+  ];
+  return (
+    <div>
+        {
+          products.length > 0  ?  (products.map(p => (
+            <p  key = {p.id}>{p.name}</p>
+          ))) :  (<p>Không có sản phẩm</p>)
+        }
+    </div>
+  );
+}
+export { ConditionalRendering, Check, ShowProduct };

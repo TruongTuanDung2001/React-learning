@@ -15,7 +15,7 @@ import { useState } from "react"; //để sử dụng useState thay đổi và c
 //   Exp10
 // } from "./components/expReact1";
 // import { Exp1, Exp2, Exp3, Exp4 } from "./components/ExpReact2";
-import { Check, ConditionalRendering } from "./components/ConditionalRendering";
+import { Check, ConditionalRendering, ShowProduct } from "./components/ConditionalRendering";
 
 //
 function App() {
@@ -235,6 +235,9 @@ function Conditional(){
       <hr /> <br />
       {/*  */}
       <Check />
+
+      {/*  */}
+      <ShowProduct />
     </div>
   )
 }
