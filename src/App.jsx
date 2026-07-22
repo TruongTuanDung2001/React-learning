@@ -25,7 +25,7 @@ import {
 } from "./components/ConditionalRendering";
 
 import { UseEffect, UseEffect2, UseEffect3 } from "./components/UseEffect";
-import { Clock } from "./components/ExpUseEffect";
+import { AutoCounter, Clock } from "./components/ExpUseEffect";
 //
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -282,6 +282,8 @@ function ExpEffect(){
   return (
     <div>
       <Clock />
+
+      <AutoCounter />
     </div>
   )
 }
