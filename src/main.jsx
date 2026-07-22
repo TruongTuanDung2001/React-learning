@@ -7,7 +7,8 @@ import {
   ExpReact1,
   ExpReact2,
   Conditional,
-  Effect
+  Effect,
+  ExpEffect
 } from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -23,6 +24,9 @@ createRoot(document.getElementById("root")).render(
     {/* <Conditional /> */}
 
     {/* Use Effect */}
-    <Effect />
+    {/* <Effect /> */}
+
+    {/* Exp useEffect */}
+    <ExpEffect />
   </StrictMode>,
 );
