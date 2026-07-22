@@ -80,5 +80,25 @@ function RandomQuote() {
 
 }
 
+// exp4: character counter
+function CharacterCounter(){
+    //giá trị của text trong textarea
+    const [text, setText] = useState("");
+    function reset(){
+        setText("");
+    }
+  return(
+    <div>
+        {/* nên dùng value = {text} nha */}
+        <textarea value={text} onChange={(e) => setText(e.target.value)}></textarea>
+        <p>Hiển thị: {text.length} ký tự</p>
+        {/* lý do vì sao nên dùng value = {text} nè */}
+        <button onClick={reset}>Reset text</button>
+        {/* nếu như mà không có value = {text} thì chỗ text.length sẽ cập nhật lại = 0, còn nội dung trong bảng textarea thì vẫn giữ nguyên */}
+        {/* nếu dùng value={text} thì nếu bấm reset thì text cập nhật lại cả length và nội dung đã ghi trong textarea thành rỗng lun. Hiều hemmm */}
+    </div>
+  )   
+}
+
 //
-export { Clock, AutoCounter, RandomQuote };
+export { Clock, AutoCounter, RandomQuote, CharacterCounter };
