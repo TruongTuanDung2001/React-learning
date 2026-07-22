@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 
 // exp1: đồng hồ
 function Clock() {
-    const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(new Date());
   //
   useEffect(() => {
-    function updateTime(){
-        const now = new Date();
-        setTime(now);
+    function updateTime() {
+      const now = new Date();
+      setTime(now);
     }
     //sau 1 giây thì chạy và thay đổi giờ
     const timer = setInterval(updateTime, 1000); // coi chừng sai cú pháp
@@ -37,7 +37,7 @@ function AutoCounter() {
     let counter;
     if (isRunning) {
       counter = setInterval(() => {
-        setCount(pre => pre + 1);
+        setCount((pre) => pre + 1);
       }, 1000);
     }
 
@@ -45,12 +45,12 @@ function AutoCounter() {
       //vì sao lại trả return về như v mà kh phải return {...<div>...} vì đó là return kiểu jsx để render ra component, còn mình cần trong hàm useEffect là 1 callback function để gọi khi unmount hay chạy lại effect
       clearInterval(counter);
     };
-  }, [isRunning] );
+  }, [isRunning]);
   //
 
   return (
     <div>
-        <h1>Count: {count}</h1>
+      <h1>Count: {count}</h1>
       <button onClick={() => setIsRunning(true)}>Start</button>
       <button onClick={() => setIsRunning(false)}>Stop</button>
       <button onClick={() => (setCount(0), setIsRunning(false))}>Reset</button>
@@ -58,5 +58,27 @@ function AutoCounter() {
   );
 }
 
+// exp3: random quote
+function RandomQuote() {
+  const quotes = [
+    "Never give up",
+    "React is awesome",
+    "Practice makes perfect",
+    "Stay hungry",
+  ];
+  const [text, setText] = useState("");
+  function random(){
+    const item = quotes[Math.floor(Math.random() * quotes.length)];
+    setText(item);
+  }
+  return (
+    <div>
+        <p>Text: {text}</p>
+        <button onClick={random}>Random</button>
+    </div>
+  )
+
+}
+
 //
-export { Clock, AutoCounter };
+export { Clock, AutoCounter, RandomQuote };
