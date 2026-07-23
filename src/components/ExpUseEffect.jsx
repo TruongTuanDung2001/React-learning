@@ -146,7 +146,7 @@ function Accordion() {
     "Javascript là ngôn ngữ cơ bản để lập trình website",
     "HTML-CSS là ngôn ngữ dùng để làm giao diện website",
   ];
-  const [index, setIndex] = useState(null)
+  const [index, setIndex] = useState(null);
   // Lưu idex là vị trí nội dung mà content cần render ra, khi click thì index bằng với key của map thì xuất vị trí content[i]. Nếu như mà click item 1 rồi bấm qua item 2 thì setIdex hoạt động và map sẽ render lại 3 phần từ kiểm tra index === i nên cái nào thỏa điều kiện mới hiện content của item đó ra theo content[i]
 
   //
@@ -154,23 +154,21 @@ function Accordion() {
     <div>
       <h1>Accordion</h1>
       {title.map((item, i) => (
-        <div key={i} onClick={() => index === i ? setIndex(null): setIndex(i)}>
+        <div
+          key={i}
+          onClick={() => (index === i ? setIndex(null) : setIndex(i))}
+        >
           <p>{item} ⬇</p>
           {index === i && <span>{content[i]}</span>}
         </div>
       ))}
     </div>
-  )
-
+  );
 }
 
 // exp7: Faq
-function FAQ(){
-    const questions = [
-    "React là gì?",
-    "useState dùng để làm gì?",
-    "JSX là gì?",
-  ];
+function FAQ() {
+  const questions = ["React là gì?", "useState dùng để làm gì?", "JSX là gì?"];
 
   const answers = [
     "React là thư viện JavaScript để xây dựng giao diện.",
@@ -179,18 +177,73 @@ function FAQ(){
   ];
 
   const [index, setIndex] = useState(null);
-  return(
+  return (
     <div>
       <h1>FAQ</h1>
       {questions.map((q, i) => (
-        <div key={i} onClick={() => index !== i ? setIndex(i) : setIndex(null)}>
+        <div
+          key={i}
+          onClick={() => (index !== i ? setIndex(i) : setIndex(null))}
+        >
           <p>{q}</p>
           {index === i && <span>{answers[i]}</span>}
         </div>
       ))}
     </div>
-  )
+  );
+}
+
+// exp8: Tabs
+function Tabs() {
+  const tabs = ["Home", "About", "Contact"];
+  const contents = [
+    "Header - Main_content - Footer",
+    "Page is show gi do gi do",
+    "truongtuandung2001@gmail.com, 0965816822, toidodaden",
+  ];
+  const [index, setIndex] = useState(0);
+  //
+  const styleTabs = {
+    display: "flex",
+    gap : "20px",
+    background: "#fff",
+  };
+  const styleContentTab = {
+    textAlign: "center",
+    padding: "20px",
+    border: "1px solid black"
+  };
+  const styleTabActive = {
+    background : "red",
+    color: "#fff"
+  }
+  //
+  return (
+    <div>
+      <h1>Tabs</h1>
+      <div className="tabs" style={styleTabs}>
+        {tabs.map((t, i) => (
+          // cái chỗ style quan trọng á: tại vì style cần = 1 object, nếu mình để index === && styleTabActive thì nếu nó true thì bth còn nếu nó false thì nó sẽ trả về rỗng không hợp với style nên sẽ gây lỗi, nêu dùng toán tử 3 ngôi và nếu false thì trả về {} object rỗng
+          <p key={i} onClick={() => setIndex(i)} style={index === i ? styleTabActive: {}}> 
+            {t}
+          </p>
+        ))}
+      </div>
+      <div className="contentTab" style={styleContentTab}>
+        {index != null && <span>{contents[index]}</span>}
+      </div>
+    </div>
+  );
 }
 
 //
-export { Clock, AutoCounter, RandomQuote, CharacterCounter, PasswordStrength, Accordion, FAQ };
+export {
+  Clock,
+  AutoCounter,
+  RandomQuote,
+  CharacterCounter,
+  PasswordStrength,
+  Accordion,
+  FAQ,
+  Tabs,
+};
