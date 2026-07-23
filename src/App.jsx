@@ -279,8 +279,22 @@ function Effect() {
 
 //Exp useEffect
 function ExpEffect(){
+  const [isDark, setIsDark] = useState(true);
+  const styleEffectDark = {
+    background: '#000',
+    color: "#d7a893",
+    border: "1px solid #000",
+    textAlign: "center"
+  }
+
+  const styleEffectLight = {
+    background: "#fff",
+    color: "#d212b2d7",
+    border: "1px solid #000",
+    textAlign: "center"
+  }
   return (
-    <div>
+    <div style={isDark? styleEffectDark : styleEffectLight}>
       <Clock />
 
       <AutoCounter />
@@ -296,6 +310,8 @@ function ExpEffect(){
       <FAQ />
 
       <Tabs />
+
+      <button onClick={() => isDark ? setIsDark(false) : setIsDark(true)}>Dark mode</button>
     </div>
   )
 }
