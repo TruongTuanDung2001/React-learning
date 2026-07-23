@@ -154,7 +154,7 @@ function Accordion() {
     <div>
       <h1>Accordion</h1>
       {title.map((item, i) => (
-        <div key={i} onClick={() => setIndex(i)}>
+        <div key={i} onClick={() => index === i ? setIndex(null): setIndex(i)}>
           <p>{item} ⬇</p>
           {index === i && <span>{content[i]}</span>}
         </div>
@@ -164,5 +164,33 @@ function Accordion() {
 
 }
 
+// exp7: Faq
+function FAQ(){
+    const questions = [
+    "React là gì?",
+    "useState dùng để làm gì?",
+    "JSX là gì?",
+  ];
+
+  const answers = [
+    "React là thư viện JavaScript để xây dựng giao diện.",
+    "useState dùng để lưu và cập nhật dữ liệu trong component.",
+    "JSX là cách viết giao diện giống HTML bên trong JavaScript.",
+  ];
+
+  const [index, setIndex] = useState(null);
+  return(
+    <div>
+      <h1>FAQ</h1>
+      {questions.map((q, i) => (
+        <div key={i} onClick={() => index !== i ? setIndex(i) : setIndex(null)}>
+          <p>{q}</p>
+          {index === i && <span>{answers[i]}</span>}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 //
-export { Clock, AutoCounter, RandomQuote, CharacterCounter, PasswordStrength, Accordion };
+export { Clock, AutoCounter, RandomQuote, CharacterCounter, PasswordStrength, Accordion, FAQ };
