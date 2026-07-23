@@ -67,38 +67,72 @@ function RandomQuote() {
     "Stay hungry",
   ];
   const [text, setText] = useState("");
-  function random(){
+  function random() {
     const item = quotes[Math.floor(Math.random() * quotes.length)];
     setText(item);
   }
   return (
     <div>
-        <p>Text: {text}</p>
-        <button onClick={random}>Random</button>
+      <p>Text: {text}</p>
+      <button onClick={random}>Random</button>
     </div>
-  )
-
+  );
 }
 
 // exp4: character counter
-function CharacterCounter(){
-    //giá trị của text trong textarea
-    const [text, setText] = useState("");
-    function reset(){
-        setText("");
-    }
-  return(
+function CharacterCounter() {
+  //giá trị của text trong textarea
+  const [text, setText] = useState("");
+  function reset() {
+    setText("");
+  }
+  return (
     <div>
-        {/* nên dùng value = {text} nha */}
-        <textarea value={text} onChange={(e) => setText(e.target.value)}></textarea>
-        <p>Hiển thị: {text.length} ký tự</p>
-        {/* lý do vì sao nên dùng value = {text} nè */}
-        <button onClick={reset}>Reset text</button>
-        {/* nếu như mà không có value = {text} thì chỗ text.length sẽ cập nhật lại = 0, còn nội dung trong bảng textarea thì vẫn giữ nguyên */}
-        {/* nếu dùng value={text} thì nếu bấm reset thì text cập nhật lại cả length và nội dung đã ghi trong textarea thành rỗng lun. Hiều hemmm */}
+      {/* nên dùng value = {text} nha */}
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      ></textarea>
+      <p>Hiển thị: {text.length} ký tự</p>
+      {/* lý do vì sao nên dùng value = {text} nè */}
+      <button onClick={reset}>Reset text</button>
+      {/* nếu như mà không có value = {text} thì chỗ text.length sẽ cập nhật lại = 0, còn nội dung trong bảng textarea thì vẫn giữ nguyên */}
+      {/* nếu dùng value={text} thì nếu bấm reset thì text cập nhật lại cả length và nội dung đã ghi trong textarea thành rỗng lun. Hiều hemmm */}
     </div>
-  )   
+  );
+}
+
+// exp5: password strength
+function PasswordStrength() {
+  const [text, setText] = useState("");
+  const [strength, setStrength] = useState("");
+
+  function handleChange(e) {
+    const input = e.target.value;
+    setText(input);
+
+    const hasNumber = /\d/.test(input); //đúng là true
+    const hasLetter = /[a-zA-ZÀ-ỹ]/.test(input); 
+    const hasSpecial = /[^a-zA-Z0-9À-ỹ\s]/.test(input);
+
+    if (input.length === 0) { //trả về ban đầu;
+      setStrength("");
+    }else if (input.length >= 6 && hasNumber && hasLetter && hasSpecial) { //kiểm tra nếu có 3 cái trước
+      setStrength("Strong");      
+    } else if(input.length >= 6 && hasNumber && hasLetter){ //xong tới 2 cái số và chữ
+      setStrength("Medium");
+    }else{ // cái còn lại, có thể là chứ hoặc số với ký tự đặt biệt, set nó là weak
+      setStrength("Weak")
+    }
+  }
+  return (
+    <div>
+      <h5>Check password</h5>
+      <input type="password" value={text} onChange={handleChange} />
+      <p>Password is: {strength}</p>
+    </div>
+  );
 }
 
 //
-export { Clock, AutoCounter, RandomQuote, CharacterCounter };
+export { Clock, AutoCounter, RandomQuote, CharacterCounter, PasswordStrength };

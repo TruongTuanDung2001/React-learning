@@ -25,7 +25,7 @@ import {
 } from "./components/ConditionalRendering";
 
 import { UseEffect, UseEffect2, UseEffect3 } from "./components/UseEffect";
-import { AutoCounter, CharacterCounter, Clock, RandomQuote } from "./components/ExpUseEffect";
+import { AutoCounter, CharacterCounter, Clock, PasswordStrength, RandomQuote } from "./components/ExpUseEffect";
 //
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -288,6 +288,8 @@ function ExpEffect(){
       <RandomQuote />
 
       <CharacterCounter />
+
+      <PasswordStrength />
     </div>
   )
 }
