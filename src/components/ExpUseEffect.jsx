@@ -112,17 +112,21 @@ function PasswordStrength() {
     setText(input);
 
     const hasNumber = /\d/.test(input); //đúng là true
-    const hasLetter = /[a-zA-ZÀ-ỹ]/.test(input); 
+    const hasLetter = /[a-zA-ZÀ-ỹ]/.test(input);
     const hasSpecial = /[^a-zA-Z0-9À-ỹ\s]/.test(input);
 
-    if (input.length === 0) { //trả về ban đầu;
+    if (input.length === 0) {
+      //trả về ban đầu;
       setStrength("");
-    }else if (input.length >= 6 && hasNumber && hasLetter && hasSpecial) { //kiểm tra nếu có 3 cái trước
-      setStrength("Strong");      
-    } else if(input.length >= 6 && hasNumber && hasLetter){ //xong tới 2 cái số và chữ
+    } else if (input.length >= 6 && hasNumber && hasLetter && hasSpecial) {
+      //kiểm tra nếu có 3 cái trước
+      setStrength("Strong");
+    } else if (input.length >= 6 && hasNumber && hasLetter) {
+      //xong tới 2 cái số và chữ
       setStrength("Medium");
-    }else{ // cái còn lại, có thể là chứ hoặc số với ký tự đặt biệt, set nó là weak
-      setStrength("Weak")
+    } else {
+      // cái còn lại, có thể là chứ hoặc số với ký tự đặt biệt, set nó là weak
+      setStrength("Weak");
     }
   }
   return (
@@ -134,5 +138,31 @@ function PasswordStrength() {
   );
 }
 
+// exp6: accordion
+function Accordion() {
+  const title = ["React", "Javascript", "HTML-CSS"];
+  const content = [
+    "React là thư viện của Javascript để xây dựng giao diện",
+    "Javascript là ngôn ngữ cơ bản để lập trình website",
+    "HTML-CSS là ngôn ngữ dùng để làm giao diện website",
+  ];
+  const [index, setIndex] = useState(null)
+  // Lưu idex là vị trí nội dung mà content cần render ra, khi click thì index bằng với key của map thì xuất vị trí content[i]. Nếu như mà click item 1 rồi bấm qua item 2 thì setIdex hoạt động và map sẽ render lại 3 phần từ kiểm tra index === i nên cái nào thỏa điều kiện mới hiện content của item đó ra theo content[i]
+
+  //
+  return (
+    <div>
+      <h1>Accordion</h1>
+      {title.map((item, i) => (
+        <div key={i} onClick={() => setIndex(i)}>
+          <p>{item} ⬇</p>
+          {index === i && <span>{content[i]}</span>}
+        </div>
+      ))}
+    </div>
+  )
+
+}
+
 //
-export { Clock, AutoCounter, RandomQuote, CharacterCounter, PasswordStrength };
+export { Clock, AutoCounter, RandomQuote, CharacterCounter, PasswordStrength, Accordion };
