@@ -205,18 +205,19 @@ function Tabs() {
   //
   const styleTabs = {
     display: "flex",
-    gap : "20px",
+    gap: "20px",
     background: "#fff",
+    cursor: "pointer",
   };
   const styleContentTab = {
     textAlign: "center",
     padding: "20px",
-    border: "1px solid black"
+    border: "1px solid black",
   };
   const styleTabActive = {
-    background : "red",
-    color: "#fff"
-  }
+    background: "red",
+    color: "#fff",
+  };
   //
   return (
     <div>
@@ -224,7 +225,11 @@ function Tabs() {
       <div className="tabs" style={styleTabs}>
         {tabs.map((t, i) => (
           // cái chỗ style quan trọng á: tại vì style cần = 1 object, nếu mình để index === && styleTabActive thì nếu nó true thì bth còn nếu nó false thì nó sẽ trả về rỗng không hợp với style nên sẽ gây lỗi, nêu dùng toán tử 3 ngôi và nếu false thì trả về {} object rỗng
-          <p key={i} onClick={() => setIndex(i)} style={index === i ? styleTabActive: {}}> 
+          <p
+            key={i}
+            onClick={() => setIndex(i)}
+            style={index === i ? styleTabActive : {}}
+          >
             {t}
           </p>
         ))}
@@ -236,6 +241,71 @@ function Tabs() {
   );
 }
 
+// exp9: product gallery (thumbnail)
+function Gallery() {
+  const listImage = [
+    "https://i.pinimg.com/736x/c9/42/78/c94278cfc1a5d4e48b83281a17faf5ea.jpg",
+    "https://i.pinimg.com/736x/06/b3/10/06b3108c13256f9147ab331fa2655369.jpg",
+    "https://i.pinimg.com/736x/9f/0d/03/9f0d03fb4c3b6a159ef6b7d4dba54473.jpg",
+    "https://i.pinimg.com/736x/05/86/6f/05866f8f1f98c6ea94286cd4308dd8f1.jpg",
+  ];
+
+  const [indexImage, setIndexImage] = useState(0);
+
+  const styleImage = {
+    display: "flex",
+    gap: "20px",
+    justifyContent: "center",
+  };
+  const styleImageParent = {
+    height: "80px",
+    width: "60px",
+  };
+
+  const styleImageChildrent = {
+    height: "50px",
+    width: "30px",
+    cursor: "pointer",
+  };
+
+  const styleSelect = {
+    border: "2px solid red",
+  };
+  //
+  return (
+    <div className="gallery">
+      <img style={styleImageParent} src={listImage[indexImage]} alt="" />
+      <div style={styleImage} className="itemImage">
+        {listImage.map((item, i) => (
+          // tại sao phải dùng spread ... | vì style chỉ nhận vào 1 object nên mình dùng spread để nối 2 style object lại thành 1 object có thuộc tính cả 2, nếu cái sau có thuộc tính trùng cái trước thì lấy kết quả thuộc tính của cái sau
+          <div key={i} onClick={() => setIndexImage(i)}>
+            {indexImage !== i ? (
+              <img style={styleImageChildrent} src={listImage[i]} alt="" />
+            ) : (
+              <img
+                style={{ ...styleImageChildrent, ...styleSelect }}
+                src={listImage[i]}
+                alt=""
+              />
+            )}
+          </div>
+        ))}
+
+        {/* xuất ra các phần tử trừ vị trí của indexImage, dùng () trong map và nó cần return 1 jsx nên mình cần div bọc các phần tử con */}
+        {/* {listImage.map((item, i) => (
+          <div key={i}>
+            {indexImage !== i ? <img style={styleImageChildrent} src={listImage[i]} alt="" /> : ""}
+          </div>
+        ))} */}
+
+        {/* như trên nhưng mình dùng {} trong map nên lúc này chưa có return, mình cần phải return trong điều kiện indexImage !== i */}
+        {/* {listImage.map((item, i) => {
+          return indexImage !== i ? <img style={styleImageChildrent} src={listImage[i]} alt="" /> : ""
+        })} */}
+      </div>
+    </div>
+  );
+}
 //
 export {
   Clock,
@@ -246,4 +316,5 @@ export {
   Accordion,
   FAQ,
   Tabs,
+  Gallery,
 };

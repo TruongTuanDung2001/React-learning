@@ -25,7 +25,7 @@ import {
 } from "./components/ConditionalRendering";
 
 import { UseEffect, UseEffect2, UseEffect3 } from "./components/UseEffect";
-import { Accordion, AutoCounter, CharacterCounter, Clock, FAQ, PasswordStrength, RandomQuote, Tabs } from "./components/ExpUseEffect";
+import { Accordion, AutoCounter, CharacterCounter, Clock, FAQ, Gallery, PasswordStrength, RandomQuote, Tabs } from "./components/ExpUseEffect";
 //
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -279,19 +279,21 @@ function Effect() {
 
 //Exp useEffect
 function ExpEffect(){
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
   const styleEffectDark = {
     background: '#000',
     color: "#d7a893",
     border: "1px solid #000",
-    textAlign: "center"
+    textAlign: "center",
+    padding: "50px"
   }
 
   const styleEffectLight = {
     background: "#fff",
     color: "#d212b2d7",
     border: "1px solid #000",
-    textAlign: "center"
+    textAlign: "center",
+    padding: "50px"
   }
   return (
     <div style={isDark? styleEffectDark : styleEffectLight}>
@@ -310,6 +312,8 @@ function ExpEffect(){
       <FAQ />
 
       <Tabs />
+
+      <Gallery />
 
       <button onClick={() => isDark ? setIsDark(false) : setIsDark(true)}>Dark mode</button>
     </div>
