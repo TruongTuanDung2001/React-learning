@@ -8,7 +8,8 @@ import {
   ExpReact2,
   Conditional,
   Effect,
-  ExpEffect
+  ExpEffect,
+  ApiUsers
 } from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -27,6 +28,8 @@ createRoot(document.getElementById("root")).render(
     {/* <Effect /> */}
 
     {/* Exp useEffect */}
-    <ExpEffect />
+    {/* <ExpEffect /> */}
+
+    <ApiUsers />
   </StrictMode>,
 );

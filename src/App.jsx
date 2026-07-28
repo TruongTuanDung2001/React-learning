@@ -26,6 +26,7 @@ import {
 
 import { UseEffect, UseEffect2, UseEffect3 } from "./components/UseEffect";
 import { Accordion, AutoCounter, CharacterCounter, Clock, FAQ, Gallery, PasswordStrength, RandomQuote, Tabs } from "./components/ExpUseEffect";
+import { UsersList } from "./components/API";
 //
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -277,7 +278,7 @@ function Effect() {
   );
 }
 
-//Exp useEffect
+// Exp useEffect
 function ExpEffect(){
   const [isDark, setIsDark] = useState(false);
   const styleEffectDark = {
@@ -319,5 +320,14 @@ function ExpEffect(){
     </div>
   )
 }
+
+// Fetch API || https://jsonplaceholder.typicode.com/users
+function ApiUsers(){
+  return (
+    <div>
+      <UsersList />
+    </div>
+  )
+}
 //
-export { App, MapProduct, ExpReact1, ExpReact2, Conditional, Effect, ExpEffect };
+export { App, MapProduct, ExpReact1, ExpReact2, Conditional, Effect, ExpEffect, ApiUsers };
