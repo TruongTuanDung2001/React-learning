@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // local
 const API = "http://localhost:3001/users";
 
-// Fetch api
+// Fetch api all users
 function UsersList() {
   const [users, setUsers] = useState([]);
 
@@ -32,7 +32,7 @@ function UsersList() {
   );
 }
 
-// Post api
+// Post api user
 function PostUser() {
   const userData = {
     id: "6",
@@ -67,6 +67,37 @@ function PostUser() {
   );
 }
 
+// Put api user
+function PutUser() {
+  const dataUpdateUser = {
+    id: "v_IEKdxfnpc", //nếu có thì id nằm ở đầu, kh thì nó cập nhật lại thì nằm cuối
+    name: "Dũng Cô Đơn Da Đen",
+    email: "dungcodondaden2001@gmail.com",
+    age: 26,
+    city: "Hồ Chí Minh",
+    avatar: "https://i.pravatar.cc/150?img=1",
+  };
+
+  const id = "v_IEKdxfnpc"; //mẫu thui nho
+  async function put(){
+    const response = await fetch(`${API}/${id}`, {
+      method: "PUT", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataUpdateUser)
+    });
+
+    if(!response.ok) throw new Error("Cập nhật thất bại")
+    else console.log("Cập nhật thành công");
+  }
+
+  return (
+    <div>
+      <button onClick={put}>Put</button>
+    </div>
+  )
+}
 
 //
-export { UsersList, PostUser };
+export { UsersList, PostUser, PutUser };

@@ -47,6 +47,14 @@
       "age": 25,
       "city": "Hồ Chí Minh",
       "avatar": "https://i.pravatar.cc/150?img=1"
+    },
+    {
+      "id": "v_IEKdxfnpc",
+      "name": "Dũng Cô Đơn Da Đen",
+      "email": "dungcodondaden2001@gmail.com",
+      "age": 26,
+      "city": "Hồ Chí Minh",
+      "avatar": "https://i.pravatar.cc/150?img=1"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
