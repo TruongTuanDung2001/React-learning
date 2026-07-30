@@ -26,7 +26,7 @@ import {
 
 import { UseEffect, UseEffect2, UseEffect3 } from "./components/UseEffect";
 import { Accordion, AutoCounter, CharacterCounter, Clock, FAQ, Gallery, PasswordStrength, RandomQuote, Tabs } from "./components/ExpUseEffect";
-import { PostUser, PutUser, UsersList } from "./components/API";
+import { PatchUser, PostUser, PutUser, UsersList } from "./components/API";
 //
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -330,6 +330,8 @@ function ApiUsers(){
       <PostUser />
 
       <PutUser />
+
+      <PatchUser />
     </div>
   )
 }

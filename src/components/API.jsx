@@ -79,9 +79,9 @@ function PutUser() {
   };
 
   const id = "v_IEKdxfnpc"; //mẫu thui nho
-  async function put(){
+  async function put(){ 
     const response = await fetch(`${API}/${id}`, {
-      method: "PUT", 
+      method: "PUT", //phải đủ dữ liệu nha, nếu thiếu 1 dữ liệu thì trừ id ra, sẽ xóa luôn dữ liệu đó
       headers: {
         "Content-Type": "application/json",
       },
@@ -99,5 +99,36 @@ function PutUser() {
   )
 }
 
+// Patch api user
+function PatchUser(){
+  const dataUpdateUser = {
+    name: "Lệnh Hồ Xung", 
+    email: "xungbangchu@gmail.com"
+  }
+  const id = "T4y9YpWuClw" // mẫu nữa nho
+  //
+  async function patch(){
+    const response = await fetch(`${API}/${id}`,{
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application-json"
+      },
+      body: JSON.stringify(dataUpdateUser)
+    })
+
+    //
+    if(!response.ok) throw new Error("Cập nhật thất bại")
+    else console.log("Cập nhật thành công");
+  }
+
+  //
+  return (
+    <div>
+      <button onClick={patch}>Patch</button>
+    </div>
+  )
+
+}
+
 //
-export { UsersList, PostUser, PutUser };
+export { UsersList, PostUser, PutUser, PatchUser };
