@@ -6,7 +6,10 @@ const API = "http://localhost:3001/users";
 // Fetch api all users
 function UsersList() {
   const [users, setUsers] = useState([]);
+  // search
+  const [keyword, setKeyword] = useState("");
 
+  //
   useEffect(() => {
     async function getUsers() {
       try {
@@ -20,12 +23,34 @@ function UsersList() {
     }
     getUsers();
   }, []);
+
+  // result search
+  const filteredUsers = users.filter(
+    (u) => u.name.toLowerCase().includes(keyword.toLocaleLowerCase()),
+    // nếu có user thiếu name:  (user.name ?? "").toLowerCase().includes(keyword.toLowerCase())
+  );
+  /*
+  Người dùng gõ input
+  → onChange chạy
+  → setKeyword(giá trị mới)
+  → state keyword đổi
+  → React render lại UsersList
+  → filteredUsers chạy lại với keyword mới
+  → .map(filteredUsers) tạo UI mới
+  → trình duyệt hiển thị kết quả phù hợp
+  */
   //
   return (
     <div>
+      <input
+        type="text"
+        placeholder="Tìm theo tên..."
+        value={keyword}
+        onChange={(event) => setKeyword(event.target.value)}
+      />
       <h1>Users</h1>
 
-      {users.map((user) => (
+      {filteredUsers.map((user) => (
         <div key={user.id}>
           <p>{user.name}</p>
           <button onClick={() => DeleteUser(user.id)}>Delete</button>
@@ -133,7 +158,8 @@ function PatchUser() {
 }
 
 // Delete api user
-async function DeleteUser(id) { // chỗ này nếu truyền {id} thì bên nút delete phải truyền vào {id: user.id}, có thể để {} hoặc không nhưng phải khớp dữ liệu
+async function DeleteUser(id) {
+  // chỗ này nếu truyền {id} thì bên nút delete phải truyền vào {id: user.id}, có thể để {} hoặc không nhưng phải khớp dữ liệu
   const response = await fetch(`${API}/${id}`, {
     method: "DELETE",
   });
