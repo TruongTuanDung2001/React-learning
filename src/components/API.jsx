@@ -26,7 +26,10 @@ function UsersList() {
       <h1>Users</h1>
 
       {users.map((user) => (
-        <p key={user.id}>{user.name}</p>
+        <div key={user.id}>
+          <p>{user.name}</p>
+          <button onClick={() => DeleteUser(user.id)}>Delete</button>
+        </div>
       ))}
     </div>
   );
@@ -79,16 +82,16 @@ function PutUser() {
   };
 
   const id = "v_IEKdxfnpc"; //mẫu thui nho
-  async function put(){ 
+  async function put() {
     const response = await fetch(`${API}/${id}`, {
       method: "PUT", //phải đủ dữ liệu nha, nếu thiếu 1 dữ liệu thì trừ id ra, sẽ xóa luôn dữ liệu đó
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(dataUpdateUser)
+      body: JSON.stringify(dataUpdateUser),
     });
 
-    if(!response.ok) throw new Error("Cập nhật thất bại")
+    if (!response.ok) throw new Error("Cập nhật thất bại");
     else console.log("Cập nhật thành công");
   }
 
@@ -96,28 +99,28 @@ function PutUser() {
     <div>
       <button onClick={put}>Put</button>
     </div>
-  )
+  );
 }
 
 // Patch api user
-function PatchUser(){
+function PatchUser() {
   const dataUpdateUser = {
-    name: "Lệnh Hồ Xung", 
-    email: "xungbangchu@gmail.com"
-  }
-  const id = "T4y9YpWuClw" // mẫu nữa nho
+    name: "Lệnh Hồ Xung",
+    email: "xungbangchu@gmail.com",
+  };
+  const id = "T4y9YpWuClw"; // mẫu nữa nho
   //
-  async function patch(){
-    const response = await fetch(`${API}/${id}`,{
+  async function patch() {
+    const response = await fetch(`${API}/${id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application-json"
+        "Content-Type": "application-json",
       },
-      body: JSON.stringify(dataUpdateUser)
-    })
+      body: JSON.stringify(dataUpdateUser),
+    });
 
     //
-    if(!response.ok) throw new Error("Cập nhật thất bại")
+    if (!response.ok) throw new Error("Cập nhật thất bại");
     else console.log("Cập nhật thành công");
   }
 
@@ -126,8 +129,19 @@ function PatchUser(){
     <div>
       <button onClick={patch}>Patch</button>
     </div>
-  )
+  );
+}
 
+// Delete api user
+async function DeleteUser(id) { // chỗ này nếu truyền {id} thì bên nút delete phải truyền vào {id: user.id}, có thể để {} hoặc không nhưng phải khớp dữ liệu
+  const response = await fetch(`${API}/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error("Xóa thất bại");
+  }
+
+  console.log("Xóa thành công");
 }
 
 //
