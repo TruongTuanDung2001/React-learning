@@ -39,6 +39,15 @@
       "age": 23,
       "city": "Hải Phòng",
       "avatar": "https://i.pravatar.cc/150?img=5"
+    },
+    {
+      "id": "2tz5sUpPEk4",
+      "name": "Trương Tuấn Dũng",
+      "email": "truongtuandung2001@gmail.com",
+      "age": 25,
+      "city": "Hồ Chí Minh",
+      "avatar": "https://i.pravatar.cc/150?img=1"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
