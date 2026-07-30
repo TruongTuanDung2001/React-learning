@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Nguyễn Minh Anh",
+      "email": "minhanh@gmail.com",
+      "age": 22,
+      "city": "Hồ Chí Minh",
+      "avatar": "https://i.pravatar.cc/150?img=1"
+    },
+    {
+      "id": "2",
+      "name": "Trần Quốc Bảo",
+      "email": "quocbao@gmail.com",
+      "age": 25,
+      "city": "Hà Nội",
+      "avatar": "https://i.pravatar.cc/150?img=2"
+    },
+    {
+      "id": "3",
+      "name": "Lê Thu Hà",
+      "email": "thuha@gmail.com",
+      "age": 21,
+      "city": "Đà Nẵng",
+      "avatar": "https://i.pravatar.cc/150?img=3"
+    },
+    {
+      "id": "4",
+      "name": "Phạm Gia Huy",
+      "email": "giahuy@gmail.com",
+      "age": 24,
+      "city": "Cần Thơ",
+      "avatar": "https://i.pravatar.cc/150?img=4"
+    },
+    {
+      "id": "5",
+      "name": "Vũ Khánh Linh",
+      "email": "khanhlinh@gmail.com",
+      "age": 23,
+      "city": "Hải Phòng",
+      "avatar": "https://i.pravatar.cc/150?img=5"
+    }
+  ]
+}
