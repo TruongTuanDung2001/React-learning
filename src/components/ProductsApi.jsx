@@ -19,7 +19,7 @@ export default function ProductsCRUD() {
   // lấy danh sách products
   async function getProducts() {
     try {
-      const response = await fetch(API);
+      const response = await fetch(API_URL);
       if (!response.ok) {
         throw new Error("No data products");
       }
@@ -45,6 +45,8 @@ export default function ProductsCRUD() {
     setStock(0);
     setImage("");
     setDescription("");
+    // phải có để cancel nút edit để nó trở về trạng thái create
+    setEditingId(null);
   }
 
   // Tạo hoặc cập nhật products
@@ -63,32 +65,32 @@ export default function ProductsCRUD() {
     try {
       //edit product
       if (editingId) {
-        const response = await fetch(`${API}/${editingId}`, {
+        const response = await fetch(`${API_URL}/${editingId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(productData),
         });
-        if (!response) throw new Error("Editing product Fails");
+        if (!response.ok) throw new Error("Editing product Fails");
       }
       //create product
       else {
-        const response = await fetch(`${API}`, {
+        const response = await fetch(`${API_URL}`, {
           method: "POST",
-          header: {
+          headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.Stringify(productData),
+          body: JSON.stringify(productData),
         });
-        if (!response) throw new Error("Create product fails");
+        if (!response.ok) throw new Error("Create product fails");
       }
 
       // reset form and load again api product
       resetForm();
       getProducts();
     } catch (error) {
-      throw new Error("Handle fails");
+      throw new Error("Handle fails :" + error);
     }
   }
 
@@ -100,6 +102,8 @@ export default function ProductsCRUD() {
     setStock(product.stock);
     setImage(product.image);
     setDescription(product.description);
+    // phải có nha để phân biệt nếu có editingId thì là edit không là create
+    setEditingId(product.id);
   }
 
   // delete product by id product
@@ -110,11 +114,11 @@ export default function ProductsCRUD() {
 
     // handle
     try {
-      const response = await fetch(`${API}/${id}`, {
+      const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
       });
 
-      if (!response) throw new Error("Delete product fails");
+      if (!response.ok) throw new Error("Delete product fails");
     } catch (error) {
       throw new Error("Handle fails");
     }
@@ -147,7 +151,7 @@ export default function ProductsCRUD() {
           type="text"
           placeholder="category"
           value={category}
-          onChange={(e) => setCategory(e.target.vale)}
+          onChange={(e) => setCategory(e.target.value)}
           required
         />
 
@@ -155,7 +159,7 @@ export default function ProductsCRUD() {
           type="number"
           placeholder="stock"
           value={stock}
-          onChange={(e) => setStock(e.targer.value)}
+          onChange={(e) => setStock(e.target.value)}
           required
         />
 

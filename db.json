@@ -102,6 +102,24 @@
       "stock": 30,
       "image": "https://picsum.photos/seed/bottle/300/300",
       "description": "Bình inox giữ nóng và lạnh."
+    },
+    {
+      "name": "Varpo 16 ellite",
+      "price": 1250000,
+      "category": "Shoe",
+      "stock": 200,
+      "image": "image/varpor16eliite",
+      "description": "new full box",
+      "id": "AWJbNlQHrrs"
+    },
+    {
+      "name": "dsafasd",
+      "price": 444,
+      "category": "dsfsad",
+      "stock": 22312,
+      "image": "dsfgsd",
+      "description": "gdssdfgsdf",
+      "id": "y3n1SIDc560"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
