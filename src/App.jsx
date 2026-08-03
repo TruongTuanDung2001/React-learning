@@ -27,6 +27,7 @@ import {
 import { UseEffect, UseEffect2, UseEffect3 } from "./components/UseEffect";
 import { Accordion, AutoCounter, CharacterCounter, Clock, FAQ, Gallery, PasswordStrength, RandomQuote, Tabs } from "./components/ExpUseEffect";
 import { PatchUser, PostUser, PutUser, UsersList } from "./components/API";
+import ProductsCRUD from "./components/ProductsApi";
 //
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -335,5 +336,14 @@ function ApiUsers(){
     </div>
   )
 }
+
+// Fetch API products
+function ApiProducts(){
+  return (
+    <div>
+      <ProductsCRUD />
+    </div>
+  )
+}
 //
-export { App, MapProduct, ExpReact1, ExpReact2, Conditional, Effect, ExpEffect, ApiUsers };
+export { App, MapProduct, ExpReact1, ExpReact2, Conditional, Effect, ExpEffect, ApiUsers, ApiProducts };

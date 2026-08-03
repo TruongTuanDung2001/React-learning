@@ -9,7 +9,8 @@ import {
   Conditional,
   Effect,
   ExpEffect,
-  ApiUsers
+  ApiUsers,
+  ApiProducts
 } from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -31,5 +32,7 @@ createRoot(document.getElementById("root")).render(
     {/* <ExpEffect /> */}
 
     {/* <ApiUsers /> */}
+
+    <ApiProducts />
   </StrictMode>,
 );

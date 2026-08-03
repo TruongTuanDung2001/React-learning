@@ -111,12 +111,98 @@ export default function ProductsCRUD() {
     // handle
     try {
       const response = await fetch(`${API}/${id}`, {
-        method: "DELETE"
+        method: "DELETE",
       });
 
-      if(!response) throw new Error("Delete product fails")
+      if (!response) throw new Error("Delete product fails");
     } catch (error) {
       throw new Error("Handle fails");
     }
   }
+
+  // return jsx
+  return (
+    <div>
+      <h1>Manager Products</h1>
+
+      <form action="" onSubmit={handleSubmit}>
+        {/* giá trị input là name và khi thay đổi thì setName, có value rồi thì có thể làm CRUD */}
+        <input
+          type="text"
+          placeholder="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+
+        <input
+          type="number"
+          placeholder="price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="category"
+          value={category}
+          onChange={(e) => setCategory(e.target.vale)}
+          required
+        />
+
+        <input
+          type="number"
+          placeholder="stock"
+          value={stock}
+          onChange={(e) => setStock(e.targer.value)}
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="image"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+
+        {/* button submit */}
+        <button type="submit">
+          {editingId ? "Editing product" : "Create product"}
+        </button>
+        {editingId && (
+          <button type="button" onClick={resetForm}>
+            Cancel editing
+          </button>
+        )}
+      </form>
+      <hr /> <br />
+
+      {/* xuất danh sách products */}
+      {loading ? (
+        <p>Loading ...</p>
+      ) : (
+        products.map((product) => (
+          <div key={product.id}>
+            <b>{product.name} - {product.price}</b>
+            <b>{product.category} - {product.stock}</b>
+            <b>{product.image} - {product.description}</b>
+            <hr />
+            <button onClick={() => handleEdit(product)}>Edit</button>
+            <button onClick={() => handleDelete(product.id)}>Delete</button>
+            <hr /> <br />
+          </div>
+        ))
+      )}
+    </div>
+  );
 }
