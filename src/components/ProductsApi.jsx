@@ -62,33 +62,61 @@ export default function ProductsCRUD() {
     //
     try {
       //edit product
-      if(editingId){
-        const response = await fetch(`${API}/${editingId}`,{
+      if (editingId) {
+        const response = await fetch(`${API}/${editingId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(productData),
         });
-        if(!response) throw new Error("Editing product Fails");
+        if (!response) throw new Error("Editing product Fails");
       }
       //create product
-      else{
-        const response = await fetch(`${API}`,{
+      else {
+        const response = await fetch(`${API}`, {
           method: "POST",
           header: {
             "Content-Type": "application/json",
           },
           body: JSON.Stringify(productData),
         });
-        if(!response) throw new Error("Create product fails")
+        if (!response) throw new Error("Create product fails");
       }
-      
+
       // reset form and load again api product
       resetForm();
       getProducts();
     } catch (error) {
-      throw new Error("Handle fails")
+      throw new Error("Handle fails");
+    }
+  }
+
+  // get data product in form
+  function handleEdit(product) {
+    setName(product.name);
+    setPrice(product.price);
+    setCategory(product.category);
+    setStock(product.stock);
+    setImage(product.image);
+    setDescription(product.description);
+  }
+
+  // delete product by id product
+  async function handleDelete(id) {
+    const isConfirmed = confirm("Do you want delete this product ?");
+
+    if (!isConfirmed) return;
+
+    // handle
+    try {
+      const response = await fetch(`${API}/${id}`, {
+        method: "DELETE"
+      });
+
+      if(!response) throw new Error("Delete product fails")
+    } catch (error) {
+      throw new Error("Handle fails");
     }
   }
 }
