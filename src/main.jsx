@@ -30,6 +30,6 @@ createRoot(document.getElementById("root")).render(
     {/* Exp useEffect */}
     {/* <ExpEffect /> */}
 
-    <ApiUsers />
+    {/* <ApiUsers /> */}
   </StrictMode>,
 );

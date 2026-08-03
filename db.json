@@ -57,5 +57,52 @@
       "avatar": "https://i.pravatar.cc/150?img=1"
     }
   ],
+  "products": [
+    {
+      "id": "p1",
+      "name": "Áo thun basic",
+      "price": 199000,
+      "category": "Thời trang",
+      "stock": 25,
+      "image": "https://picsum.photos/seed/tshirt/300/300",
+      "description": "Áo thun cotton mềm, form unisex."
+    },
+    {
+      "id": "p2",
+      "name": "Giày sneaker trắng",
+      "price": 599000,
+      "category": "Giày dép",
+      "stock": 12,
+      "image": "https://picsum.photos/seed/sneaker/300/300",
+      "description": "Giày sneaker phong cách tối giản."
+    },
+    {
+      "id": "p3",
+      "name": "Balo laptop",
+      "price": 459000,
+      "category": "Phụ kiện",
+      "stock": 18,
+      "image": "https://picsum.photos/seed/backpack/300/300",
+      "description": "Balo chống sốc, phù hợp laptop 15.6 inch."
+    },
+    {
+      "id": "p4",
+      "name": "Tai nghe Bluetooth",
+      "price": 799000,
+      "category": "Công nghệ",
+      "stock": 9,
+      "image": "https://picsum.photos/seed/headphones/300/300",
+      "description": "Tai nghe không dây, pin dùng đến 24 giờ."
+    },
+    {
+      "id": "p5",
+      "name": "Bình giữ nhiệt",
+      "price": 189000,
+      "category": "Gia dụng",
+      "stock": 30,
+      "image": "https://picsum.photos/seed/bottle/300/300",
+      "description": "Bình inox giữ nóng và lạnh."
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
