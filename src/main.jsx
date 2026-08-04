@@ -33,6 +33,8 @@ createRoot(document.getElementById("root")).render(
 
     {/* <ApiUsers /> */}
 
-    <ApiProducts />
+    {/* <ApiProducts /> */}
+
+    <ApiUsers />
   </StrictMode>,
 );

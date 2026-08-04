@@ -28,6 +28,7 @@ import { UseEffect, UseEffect2, UseEffect3 } from "./components/UseEffect";
 import { Accordion, AutoCounter, CharacterCounter, Clock, FAQ, Gallery, PasswordStrength, RandomQuote, Tabs } from "./components/ExpUseEffect";
 import { PatchUser, PostUser, PutUser, UsersList } from "./components/API";
 import ProductsCRUD from "./components/ProductsApi";
+import UsersCRUD from "./components/UsersApi";
 //
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -323,19 +324,19 @@ function ExpEffect(){
 }
 
 // Fetch API || https://jsonplaceholder.typicode.com/users
-function ApiUsers(){
-  return (
-    <div>
-      <UsersList />
+// function ApiUsers(){
+//   return (
+//     <div>
+//       <UsersList />
 
-      <PostUser />
+//       <PostUser />
 
-      <PutUser />
+//       <PutUser />
 
-      <PatchUser />
-    </div>
-  )
-}
+//       <PatchUser />
+//     </div>
+//   )
+// }
 
 // Fetch API products
 function ApiProducts(){
@@ -343,6 +344,13 @@ function ApiProducts(){
     <div>
       <ProductsCRUD />
     </div>
+  )
+}
+
+// Fetch API users
+function ApiUsers(){
+  return (
+    <UsersCRUD />
   )
 }
 //
