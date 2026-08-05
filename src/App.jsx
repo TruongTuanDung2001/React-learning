@@ -29,6 +29,14 @@ import { Accordion, AutoCounter, CharacterCounter, Clock, FAQ, Gallery, Password
 import { PatchUser, PostUser, PutUser, UsersList } from "./components/API";
 import ProductsCRUD from "./components/ProductsApi";
 import UsersCRUD from "./components/UsersApi";
+
+//react router dom
+import { Routes, Route, Link } from "react-router-dom"; // cái này để gom các thg bên dưới chung lại
+
+import HomePage from "./components/HomePage";
+import NewsPage from "./components/NewsPage";
+import AboutPage from "./components/AboutPage";
+
 //
 function App() {
   const [count, setCount] = useState(0); //setCount để thay đổi count lưu lại sau khi chạy increase()
@@ -353,5 +361,42 @@ function ApiUsers(){
     <UsersCRUD />
   )
 }
-//
-export { App, MapProduct, ExpReact1, ExpReact2, Conditional, Effect, ExpEffect, ApiUsers, ApiProducts };
+
+// React router dom
+function RouterDOM(){
+  return (
+    <div className="navbar">
+      <ul>
+        <li>
+          {/* Nhớ Link phải ghi hoa chữ L và Link to "" trong ngoặc, import Link chứ kh phải Links */}
+          <Link to="/">Home</Link> 
+        </li>
+        <li>
+          <Link to="/news">News</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/test">Test</Link>
+        </li>
+      </ul>
+
+      <Routes>
+        {/* path là đường dẫn, nếu khi link mà cùng giá trị với path thì react sẽ nhận và load element
+        - element là component cần hiển thị nên cần 1 JSX Element
+        cần {<HomePage />} chứ kh phải {HomePage} vì nó cần là load giao diện ra
+        */}
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/news" element={<NewsPage/>} />
+        <Route path="/about" element={<AboutPage/>} />
+      </Routes>
+    </div>
+
+  )
+}
+
+
+
+//end
+export { App, MapProduct, ExpReact1, ExpReact2, Conditional, Effect, ExpEffect, ApiUsers, ApiProducts, RouterDOM };

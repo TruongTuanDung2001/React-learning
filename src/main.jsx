@@ -1,5 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+
+// react router dom
+import { BrowserRouter } from "react-router-dom";
+
+//
 import "./index.css";
 import {
   App,
@@ -10,31 +15,35 @@ import {
   Effect,
   ExpEffect,
   ApiUsers,
-  ApiProducts
+  ApiProducts,
+  RouterDOM
 } from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    {/* <App />
-    <MapProduct /> */}
-    {/* <ExpReact1 /> */}
+  // <StrictMode>
+  //   {/* <App />
+  //   <MapProduct /> */}
+  //   {/* <ExpReact1 /> */}
 
-    {/* là 1 function được lấy trong App.jsx */}
-    {/* <ExpReact2 /> */}
+  //   {/* là 1 function được lấy trong App.jsx */}
+  //   {/* <ExpReact2 /> */}
 
-    {/* ConditionalRendering */}
-    {/* <Conditional /> */}
+  //   {/* ConditionalRendering */}
+  //   {/* <Conditional /> */}
 
-    {/* Use Effect */}
-    {/* <Effect /> */}
+  //   {/* Use Effect */}
+  //   {/* <Effect /> */}
 
-    {/* Exp useEffect */}
-    {/* <ExpEffect /> */}
+  //   {/* Exp useEffect */}
+  //   {/* <ExpEffect /> */}
 
-    {/* <ApiUsers /> */}
+  //   {/* <ApiUsers /> */}
 
-    {/* <ApiProducts /> */}
+  //   {/* <ApiProducts /> */}
 
-    <ApiUsers />
-  </StrictMode>,
+  //   {/* <ApiUsers /> */}
+  // </StrictMode>,
+  <BrowserRouter>
+    <RouterDOM />
+  </BrowserRouter>
 );
