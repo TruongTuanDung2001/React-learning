@@ -36,6 +36,7 @@ import { Routes, Route, Link } from "react-router-dom"; // cái này để gom c
 import HomePage from "./components/HomePage";
 import NewsPage from "./components/NewsPage";
 import AboutPage from "./components/AboutPage";
+import Navbar from "./components/Navbar";
 
 //
 function App() {
@@ -366,9 +367,9 @@ function ApiUsers(){
 function RouterDOM(){
   return (
     <div className="navbar">
-      <ul>
+      {/* Nhớ Link phải ghi hoa chữ L và Link to "" trong ngoặc, import Link chứ kh phải Links */}
+      {/* <ul>
         <li>
-          {/* Nhớ Link phải ghi hoa chữ L và Link to "" trong ngoặc, import Link chứ kh phải Links */}
           <Link to="/">Home</Link> 
         </li>
         <li>
@@ -380,7 +381,9 @@ function RouterDOM(){
         <li>
           <Link to="/test">Test</Link>
         </li>
-      </ul>
+      </ul> */}
+
+      <Navbar />
 
       <Routes>
         {/* path là đường dẫn, nếu khi link mà cùng giá trị với path thì react sẽ nhận và load element
