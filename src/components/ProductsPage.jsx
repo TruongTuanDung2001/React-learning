@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 //
 export default function ProductsPage() {
   const arrProducts = [
@@ -41,6 +42,7 @@ export default function ProductsPage() {
                 <b>Price: {product.price} | </b>
                 <b>Category: {product.category} | </b>
                 <b>Stock: {product.stock}</b>
+                <Link to={`/products/${product.id}`}>Detail product</Link>
                 <br /> <br />
             </div>
         ))}

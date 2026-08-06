@@ -399,7 +399,7 @@ function RouterDOM(){
         
         {/* router product detail */}
         {/* :id có nghĩa là id là 1 parameter, có thể thay đổi */}
-        <Route path="/products:id" element={<ProductDetailPage />}  /> 
+        <Route path="/products/:id" element={<ProductDetailPage />}  /> 
       </Routes>
     </div>
 
