@@ -39,6 +39,7 @@ import AboutPage from "./components/AboutPage";
 import ProductsPage from "./components/ProductsPage";
 import ProductDetailPage from "./components/ProductDetailPage";
 import Navbar from "./components/Navbar";
+import CreateProduct from "./components/CreateProductPage";
 
 //
 function App() {
@@ -400,6 +401,9 @@ function RouterDOM(){
         {/* router product detail */}
         {/* :id có nghĩa là id là 1 parameter, có thể thay đổi */}
         <Route path="/products/:id" element={<ProductDetailPage />}  /> 
+
+        {/* create product */}
+        <Route path="/create-product" element={<CreateProduct/>} />
       </Routes>
     </div>
 

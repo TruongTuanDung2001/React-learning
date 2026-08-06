@@ -36,6 +36,7 @@ export default function ProductsPage() {
   return (
     <div className="products">
         <h1>This is products page</h1> <br />
+        <Link to="/create-product">Create product</Link>
         {arrProducts.map(product => (
             <div className="item-product" key={product.id}>
                 <hr /> <br />
