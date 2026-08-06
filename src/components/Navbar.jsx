@@ -16,6 +16,15 @@ export default function Navbar() {
         <li>
           <Link to="/about">About</Link>
         </li>
+        <li>
+          <Link to="/admin/dashboard">Admin Dashboard</Link>
+        </li>
+        <li>
+          <Link to="/admin/products">Admin Products</Link>
+        </li>
+        <li>
+          <Link to="/admin/users">Admin Users</Link>
+        </li>
       </ul>
     </div>
   );

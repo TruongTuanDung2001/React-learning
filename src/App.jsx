@@ -40,6 +40,10 @@ import ProductsPage from "./components/ProductsPage";
 import ProductDetailPage from "./components/ProductDetailPage";
 import Navbar from "./components/Navbar";
 import CreateProduct from "./components/CreateProductPage";
+import AdminLayoutPage from "./pages/AdminLayout";
+import Dashboard from "./pages/Dashboard";
+import Products from "./pages/Products";
+import Users from "./pages/Users";
 
 //
 function App() {
@@ -404,6 +408,19 @@ function RouterDOM(){
 
         {/* create product */}
         <Route path="/create-product" element={<CreateProduct/>} />
+
+        
+        {/* outlet */}
+        {/* có thể dùng bất kỳ component là route cha, không nhất thiết phải trong thư mục */}
+        {/* phân biệt rõ giữ page và layout
+          page: là hiển thị kết quả, nội dung cụ thể ra
+          layout: là khung để hiển thị giao diện các page con ra trên khung đã tạo
+        */}
+        <Route path="/admin" element={<AdminLayoutPage/>} > 
+          <Route path="dashboard" element={<Dashboard/>} />
+          <Route path="products" element={<Products/>} />
+          <Route path="users" element={<Users/>} />
+        </Route>
       </Routes>
     </div>
 
