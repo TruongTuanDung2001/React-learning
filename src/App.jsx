@@ -36,6 +36,8 @@ import { Routes, Route, Link } from "react-router-dom"; // cái này để gom c
 import HomePage from "./components/HomePage";
 import NewsPage from "./components/NewsPage";
 import AboutPage from "./components/AboutPage";
+import ProductsPage from "./components/ProductsPage";
+import ProductDetailPage from "./components/ProductDetailPage";
 import Navbar from "./components/Navbar";
 
 //
@@ -391,8 +393,13 @@ function RouterDOM(){
         cần {<HomePage />} chứ kh phải {HomePage} vì nó cần là load giao diện ra
         */}
         <Route path="/" element={<HomePage/>} />
+        <Route path="/products" element={<ProductsPage/>} />
         <Route path="/news" element={<NewsPage/>} />
         <Route path="/about" element={<AboutPage/>} />
+        
+        {/* router product detail */}
+        {/* :id có nghĩa là id là 1 parameter, có thể thay đổi */}
+        <Route path="/products:id" element={<ProductDetailPage />}  /> 
       </Routes>
     </div>
 
