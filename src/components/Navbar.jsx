@@ -4,8 +4,14 @@ import AuthContext from "../contexts/AuthContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  function logout() {
-    localStorage.removeItem("isLoggedIn");
+  // function logout() {
+  //   localStorage.removeItem("isLoggedIn");
+  //   navigate("/login");
+  // }
+
+  const { logout } = useContext(AuthContext);
+  function handleLogout(){
+    logout();
     navigate("/login");
   }
 
@@ -39,7 +45,7 @@ export default function Navbar() {
           <Link to="/admin/users">Admin Users</Link>
         </li>
       </ul>
-      <button onClick={logout}>Logout</button>
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 }
