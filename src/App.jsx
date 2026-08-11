@@ -25,7 +25,17 @@ import {
 } from "./components/ConditionalRendering";
 
 import { UseEffect, UseEffect2, UseEffect3 } from "./components/UseEffect";
-import { Accordion, AutoCounter, CharacterCounter, Clock, FAQ, Gallery, PasswordStrength, RandomQuote, Tabs } from "./components/ExpUseEffect";
+import {
+  Accordion,
+  AutoCounter,
+  CharacterCounter,
+  Clock,
+  FAQ,
+  Gallery,
+  PasswordStrength,
+  RandomQuote,
+  Tabs,
+} from "./components/ExpUseEffect";
 import { PatchUser, PostUser, PutUser, UsersList } from "./components/API";
 import ProductsCRUD from "./components/ProductsApi";
 import UsersCRUD from "./components/UsersApi";
@@ -44,6 +54,7 @@ import AdminLayoutPage from "./pages/AdminLayout";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Users from "./pages/Users";
+import NotFoundPage from "./pages/NotFound";
 
 //
 function App() {
@@ -297,25 +308,25 @@ function Effect() {
 }
 
 // Exp useEffect
-function ExpEffect(){
+function ExpEffect() {
   const [isDark, setIsDark] = useState(false);
   const styleEffectDark = {
-    background: '#000',
+    background: "#000",
     color: "#d7a893",
     border: "1px solid #000",
     textAlign: "center",
-    padding: "50px"
-  }
+    padding: "50px",
+  };
 
   const styleEffectLight = {
     background: "#fff",
     color: "#d212b2d7",
     border: "1px solid #000",
     textAlign: "center",
-    padding: "50px"
-  }
+    padding: "50px",
+  };
   return (
-    <div style={isDark? styleEffectDark : styleEffectLight}>
+    <div style={isDark ? styleEffectDark : styleEffectLight}>
       <Clock />
 
       <AutoCounter />
@@ -334,9 +345,11 @@ function ExpEffect(){
 
       <Gallery />
 
-      <button onClick={() => isDark ? setIsDark(false) : setIsDark(true)}>Dark mode</button>
+      <button onClick={() => (isDark ? setIsDark(false) : setIsDark(true))}>
+        Dark mode
+      </button>
     </div>
-  )
+  );
 }
 
 // Fetch API || https://jsonplaceholder.typicode.com/users
@@ -355,23 +368,21 @@ function ExpEffect(){
 // }
 
 // Fetch API products
-function ApiProducts(){
+function ApiProducts() {
   return (
     <div>
       <ProductsCRUD />
     </div>
-  )
+  );
 }
 
 // Fetch API users
-function ApiUsers(){
-  return (
-    <UsersCRUD />
-  )
+function ApiUsers() {
+  return <UsersCRUD />;
 }
 
 // React router dom
-function RouterDOM(){
+function RouterDOM() {
   return (
     <div className="navbar">
       {/* Nhớ Link phải ghi hoa chữ L và Link to "" trong ngoặc, import Link chứ kh phải Links */}
@@ -390,58 +401,71 @@ function RouterDOM(){
         </li>
       </ul> */}
 
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Routes>
         {/* path là đường dẫn, nếu khi link mà cùng giá trị với path thì react sẽ nhận và load element
         - element là component cần hiển thị nên cần 1 JSX Element
         cần {<HomePage />} chứ kh phải {HomePage} vì nó cần là load giao diện ra
         */}
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/products" element={<ProductsPage/>} />
-        <Route path="/news" element={<NewsPage/>} />
-        <Route path="/about" element={<AboutPage/>} />
-        
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/about" element={<AboutPage />} />
+
         {/* router product detail */}
         {/* :id có nghĩa là id là 1 parameter, có thể thay đổi */}
-        <Route path="/products/:id" element={<ProductDetailPage />}  /> 
+        <Route path="/products/:id" element={<ProductDetailPage />} />
 
         {/* create product */}
-        <Route path="/create-product" element={<CreateProduct/>} />
+        <Route path="/create-product" element={<CreateProduct />} />
 
-        
         {/* outlet */}
         {/* có thể dùng bất kỳ component là route cha, không nhất thiết phải trong thư mục */}
         {/* phân biệt rõ giữ page và layout
           page: là hiển thị kết quả, nội dung cụ thể ra
           layout: là khung để hiển thị giao diện các page con ra trên khung đã tạo
         */}
-        <Route path="/admin" element={<AdminLayoutPage/>} >
+        <Route path="/admin" element={<AdminLayoutPage />}>
           {/* <Route path="dashboard" index element={<Dashboard/>} /> này là bình thường /admin/dashboard */}
           {/* nếu muốn khi vào /admin mà hiện dashboad thì dùng: */}
           {/* <Route index element={<Dashboard/>} /> */}
 
           {/* nếu muốn trang /dashboard vừa là trang mặc định nếu vào /admin và có thể tự động chuyển đến /admin/dashboard thì dùng: */}
-          <Route index element = {<Navigate to="dashboard" replace/>}/>
+          <Route index element={<Navigate to="dashboard" replace />} />
           {/* replace để thay thể lịch sử truy cập như là mình vào /admin xong vào /admin/dashboard thì khi back lại web sẽ vẫn trở về /admin, replace khắc phục chuyện đó */}
 
           {/* đầu tiên: vào /admin sẽ render ra adminlayoutpage
             - thấy route index element ... to "dashboard" thì chuyển đến đường dẫn /admin/dashboard
           */}
-          
 
           {/* trang admin/dashboard  */}
-          <Route path="dashboard" element={<Dashboard/>} />
-          <Route path="products" element={<Products/>} />
-          <Route path="users" element={<Users/>} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="products" element={<Products />} />
+          <Route path="users" element={<Users />} />
+          {/* /admin/jkhfdskjfh */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
+
+        {/* 404 not found nên đặt ở cuối và nó sẽ chạy nếu như không tìm thấy đường dẫn route phù hợp
+        - Nếu muốn phần admin hay users có 1 page notfound riêng thì gán vào trong route bao nó, khi đó vd: /admim/zzz không có sẽ chuyển đến trang page not found
+        */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
-
-  )
+  );
 }
 
-
-
 //end
-export { App, MapProduct, ExpReact1, ExpReact2, Conditional, Effect, ExpEffect, ApiUsers, ApiProducts, RouterDOM };
+export {
+  App,
+  MapProduct,
+  ExpReact1,
+  ExpReact2,
+  Conditional,
+  Effect,
+  ExpEffect,
+  ApiUsers,
+  ApiProducts,
+  RouterDOM,
+};
