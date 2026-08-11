@@ -57,6 +57,7 @@ import Users from "./pages/Users";
 import NotFoundPage from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
+import GuestRoute from "./components/GuestRoute";
 
 //
 function App() {
@@ -452,7 +453,9 @@ function RouterDOM() {
         </Route>
 
         {/* Route login page */}
-        <Route path="/login" element={<LoginPage/>}  />
+        <Route element={<GuestRoute />}>
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
 
         {/* 404 not found nên đặt ở cuối và nó sẽ chạy nếu như không tìm thấy đường dẫn route phù hợp
         - Nếu muốn phần admin hay users có 1 page notfound riêng thì gán vào trong route bao nó, khi đó vd: /admim/zzz không có sẽ chuyển đến trang page not found
