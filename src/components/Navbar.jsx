@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  function logout() {
+    localStorage.removeItem("isLoggedIn");
+    navigate("/login");
+  }
   return (
     <div>
       <ul>
@@ -26,6 +31,7 @@ export default function Navbar() {
           <Link to="/admin/users">Admin Users</Link>
         </li>
       </ul>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }
