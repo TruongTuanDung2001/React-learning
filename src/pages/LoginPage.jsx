@@ -1,18 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
 
 export default function LoginPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  function login() {
+
+  // function login() {
+  //   if (userName && password) {
+  //     localStorage.setItem("isLoggedIn", true);
+  //     navigate("/admin");
+  //   }
+  // }
+
+  // use auth context
+  const { login } = useContext(AuthContext); // lấy theo kiểu destructuring, thay vì lấy auth.login() thì làm cách này để lấy property có tên login từ object auth trả về
+  
+  // ở đây login kh phải là jsx mà là cú pháp để sử dụng destructuring object
+
+  function handleLogin() {
     if (userName && password) {
-      localStorage.setItem("isLoggedIn", true);
+      login();
       navigate("/admin");
     }
-    //
-    let isLoggedIn = localStorage.getItem("isLoggedIn");
   }
+
   return (
     <div>
       <h1>Login</h1>
@@ -31,7 +44,7 @@ export default function LoginPage() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button onClick={login}>Login</button>
+      <button onClick={handleLogin}>Login</button>
     </div>
   );
 }

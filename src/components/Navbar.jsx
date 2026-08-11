@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -6,8 +8,14 @@ export default function Navbar() {
     localStorage.removeItem("isLoggedIn");
     navigate("/login");
   }
+
+  // get auth context
+  const auth = useContext(AuthContext);
+  console.log(auth);
+
   return (
     <div>
+      <h1>Hello {auth.name}</h1>
       <ul>
         <li>
           <Link to="/">Home</Link>

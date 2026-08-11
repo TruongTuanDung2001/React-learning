@@ -16,8 +16,9 @@ import {
   ExpEffect,
   ApiUsers,
   ApiProducts,
-  RouterDOM
+  RouterDOM,
 } from "./App.jsx";
+import { AuthProvider } from "./contexts/AuthContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
@@ -44,6 +45,9 @@ createRoot(document.getElementById("root")).render(
   //   {/* <ApiUsers /> */}
   // </StrictMode>,
   <BrowserRouter>
-    <RouterDOM />
-  </BrowserRouter>
+    <AuthProvider>
+      {/* tất cả các router dom điều có thể sử dụng auth context vì nằm trong authProvider */}
+      <RouterDOM />
+    </AuthProvider>
+  </BrowserRouter>,
 );
