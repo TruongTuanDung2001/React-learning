@@ -417,7 +417,9 @@ function RouterDOM(){
           layout: là khung để hiển thị giao diện các page con ra trên khung đã tạo
         */}
         <Route path="/admin" element={<AdminLayoutPage/>} > 
-          <Route path="dashboard" element={<Dashboard/>} />
+          {/* <Route path="dashboard" index element={<Dashboard/>} /> này là bình thường /admin/dashboard */}
+          {/* nếu muốn khi vào /admin mà hiện dashboad thì dùng: */}
+          <Route index element={<Dashboard/>} />
           <Route path="products" element={<Products/>} />
           <Route path="users" element={<Users/>} />
         </Route>
