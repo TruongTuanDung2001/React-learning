@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import AuthContext from "../contexts/AuthContext";
 
 export default function GuestRoute(){
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    // const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const { isLoggedIn } = useContext(AuthContext);
+
     if(isLoggedIn) return <Navigate to="/admin" replace />
     return <Outlet/>
     // Kiểm tra trạng thái isLoggedIn nếu như đã đăng nhập (true) thì khi người dùng vào /login thì sẽ quay lại trang admin.

@@ -3,7 +3,14 @@ import { createContext, useState } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    // kiểm tra trạng thái login
+    localStorage.getItem("isLoggedIn") === "true",
+    // nếu kh có
+    //      null === "true" => isLoggedIn = false => chưa login (protected xử lý và chuyển qua /login)
+    //      nếu như đã login thì localStorage.setItem("isLoggedIn", "true")
+    // =>   "true" === "true" => isLoggedIn = true => đã login (protected xử lý và chuyển qua outlet /admin)
+  );
 
   // login
   function login() {
