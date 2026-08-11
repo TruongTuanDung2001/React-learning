@@ -8,6 +8,7 @@ export default function AdminLayoutPage(){
             {/* cái chỗ navbar này thì: mỗi trang như user hay admin sẽ có 1 cái navbar riêng. Nên sau này có thể thay đổi chỗ navbar là của thiết kế riêng navbar cho từng trang sử dụng nó */}
 
             {/* outlet */}
+             {/* cái này là chỗ render ra cái route con mà nó bao, nếu đường dẫn là route nào thì hiện route đó ở outlet  */}
             <Outlet/>
         </div>
     )

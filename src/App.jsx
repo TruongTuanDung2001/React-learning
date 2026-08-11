@@ -55,6 +55,7 @@ import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Users from "./pages/Users";
 import NotFoundPage from "./pages/NotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 //
 function App() {
@@ -426,25 +427,27 @@ function RouterDOM() {
           page: là hiển thị kết quả, nội dung cụ thể ra
           layout: là khung để hiển thị giao diện các page con ra trên khung đã tạo
         */}
-        <Route path="/admin" element={<AdminLayoutPage />}>
-          {/* <Route path="dashboard" index element={<Dashboard/>} /> này là bình thường /admin/dashboard */}
-          {/* nếu muốn khi vào /admin mà hiện dashboad thì dùng: */}
-          {/* <Route index element={<Dashboard/>} /> */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/admin" element={<AdminLayoutPage />}>
+            {/* <Route path="dashboard" index element={<Dashboard/>} /> này là bình thường /admin/dashboard */}
+            {/* nếu muốn khi vào /admin mà hiện dashboad thì dùng: */}
+            {/* <Route index element={<Dashboard/>} /> */}
 
-          {/* nếu muốn trang /dashboard vừa là trang mặc định nếu vào /admin và có thể tự động chuyển đến /admin/dashboard thì dùng: */}
-          <Route index element={<Navigate to="dashboard" replace />} />
-          {/* replace để thay thể lịch sử truy cập như là mình vào /admin xong vào /admin/dashboard thì khi back lại web sẽ vẫn trở về /admin, replace khắc phục chuyện đó */}
+            {/* nếu muốn trang /dashboard vừa là trang mặc định nếu vào /admin và có thể tự động chuyển đến /admin/dashboard thì dùng: */}
+            <Route index element={<Navigate to="dashboard" replace />} />
+            {/* replace để thay thể lịch sử truy cập như là mình vào /admin xong vào /admin/dashboard thì khi back lại web sẽ vẫn trở về /admin, replace khắc phục chuyện đó */}
 
-          {/* đầu tiên: vào /admin sẽ render ra adminlayoutpage
+            {/* đầu tiên: vào /admin sẽ render ra adminlayoutpage
             - thấy route index element ... to "dashboard" thì chuyển đến đường dẫn /admin/dashboard
           */}
 
-          {/* trang admin/dashboard  */}
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="products" element={<Products />} />
-          <Route path="users" element={<Users />} />
-          {/* /admin/jkhfdskjfh */}
-          <Route path="*" element={<NotFoundPage />} />
+            {/* trang admin/dashboard  */}
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="products" element={<Products />} />
+            <Route path="users" element={<Users />} />
+            {/* /admin/jkhfdskjfh */}
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
         </Route>
 
         {/* 404 not found nên đặt ở cuối và nó sẽ chạy nếu như không tìm thấy đường dẫn route phù hợp
